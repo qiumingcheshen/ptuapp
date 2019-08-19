@@ -25,9 +25,11 @@
       </el-col>
       <el-col :xs="12" :sm="5" :md="5" :lg="4" :xl="4">
         <div class="index_header_login">
-          <a href="#">登录</a>
+          <router-link to="/login">登录</router-link>
+          <router-view></router-view>
           <span>|</span>
-          <a href="#">注册</a>
+          <router-link to="/register">注册</router-link>
+          <router-view></router-view>
         </div>
       </el-col>
     </el-row>
@@ -1177,6 +1179,7 @@ export default {};
   margin-top: 100px;
   height: 280px;
 }
+
 .footer {
   max-width: 1200px;
   height: 200px;
@@ -1184,24 +1187,32 @@ export default {};
   padding-top: 30px;
   text-align: center;
 }
+
 .footer_logo {
   width: 200px;
   height: 50px;
 }
+
 .footer_infos {
   float: left;
   width: 33.33%;
   text-align: left;
   dd {
     margin-top: 10px;
+    color: #fff;
+  }
+  a {
+    color: #afafaf;
   }
 }
+
 .footer_contact {
   float: right;
   a {
     margin-left: 60px;
   }
 }
+
 .companyInfo {
   max-width: 1200px;
   height: 80px;
@@ -1212,5 +1223,6 @@ export default {};
   font-size: 12px;
   color: #666;
 }
+
 // footer end
 </style>

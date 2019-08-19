@@ -84,7 +84,7 @@ input {
 body {
     background-color: #f4f4f4;
     font: 12px/1.5 'Microsoft YaHei', 'Heiti SC', tahoma, arial, 'Hiragino Sans GB', \\5B8B\4F53, sans-serif;
-    color: #fff
+    color: #333;
 }
 
 .hide,
@@ -105,4 +105,93 @@ body {
 
 .clearfix {
     *zoom: 1
+}
+
+
+/* 修改分页的默认css */
+
+.el-pagination li.active {
+    background: linear-gradient(90deg, rgba(255, 117, 140, 1), rgba(255, 126, 179, 1))!important;
+}
+
+.el-pager li.active {
+    color: #fff!important;
+}
+
+.el-pager li {
+    height: 40px;
+    line-height: 40px;
+    padding: 0 15px;
+    text-align: center;
+    background: rgba(255, 255, 255, 1)!important;
+    border: 1px solid rgba(229, 229, 229, 1);
+    border-radius: 6px!important;
+}
+
+.el-pagination .btn-next span {
+    display: inline-block;
+    background: rgba(255, 255, 255, 1);
+    border: 1px solid rgba(229, 229, 229, 1);
+    border-radius: 6px!important;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    padding: 0 15px;
+    margin-right: 10px;
+}
+
+.el-pager .more::before {
+    line-height: 40px!important;
+}
+
+.el-pagination button,
+.el-pagination span:not([class*=suffix]) {
+    height: 40px;
+    line-height: 40px;
+}
+
+
+/* 修改登录注册页的默认css */
+
+.el-input-group__append,
+.el-input-group__prepend {
+    background-color: #fff;
+    padding: 0 25px 0 15px;
+}
+
+
+/* 修改下拉框的默认css */
+
+.el-select-dropdown__item {
+    color: #666;
+}
+
+.el-select-dropdown__item:hover {
+    background-color: #ff9fc4;
+    color: #fff;
+}
+
+.el-select .el-input.is-focus .el-input__inner {
+    border-color: #e5e5e5;
+}
+
+.el-select .el-input__inner:focus {
+    border-color: #e5e5e5;
+}
+
+
+/* 修改颜色选择器默认css */
+
+.el-color-picker__trigger {
+    width: 210px;
+}
+
+.el-color-picker__trigger {
+    padding: 0;
+}
+
+.el-color-picker__color {
+    overflow: hidden;
+    border: none;
+    border-radius: 4px;
 }

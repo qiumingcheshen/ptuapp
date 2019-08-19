@@ -1,42 +1,35 @@
 <template>
-  <div class="login_container">
+  <div class="register_container">
     <!-- 登录页遮罩 -->
-    <div class="login_mask"></div>
+    <div class="register_mask"></div>
     <!-- 登录区域 -->
-    <div class="login_box">
-      <div class="login_txt">登录</div>
+    <div class="register_box">
+      <div class="register_txt">注册</div>
       <!-- 表单区域 -->
-      <el-form :model="loginForm">
-        <div class="login_input_box">
-          <el-input v-model="loginForm.mobilePhone" placeholder="手机号" class="login_input">
+      <el-form :model="registerForm">
+        <div class="register_input_box">
+          <el-input v-model="registerForm.mobilePhone" placeholder="手机号" class="register_input">
             <template slot="prepend">+86</template>
           </el-input>
-          <el-input
-            v-model="loginForm.password"
-            placeholder="请输入密码"
-            class="login_input"
-            type="password"
-          >
-            <template slot="prepend">密码</template>
-          </el-input>
+          <!-- 滑动块 -->
         </div>
-        <div class="login_msg">
-          <div class="login_msg_login">
+        <div class="register_msg">
+          <div class="register_msg_register">
             <a href="javascript:;">短信密码登录</a>
           </div>
-          <div class="login_msg_forget">
+          <div class="register_msg_forget">
             <a href="javascript:;">忘记密码 ？</a>
           </div>
         </div>
-        <div class="login_btn">
-          <el-button class="login_btn_pink">登录</el-button>
+        <div class="register_btn">
+          <el-button class="register_btn_pink">注册</el-button>
         </div>
       </el-form>
       <!-- 注册区域 -->
-      <div class="login_register">
+      <div class="register_register">
         <a href="javascript:;">
-          <span class="login_register_no">没有账号？</span>
-          <span class="login_register_now">立即注册</span>
+          <span class="register_register_no">已有账号？</span>
+          <span class="register_register_now">立即登录</span>
         </a>
       </div>
     </div>
@@ -48,7 +41,7 @@ export default {
   data() {
     return {
       // 登录表单的数据绑定对象
-      loginForm: {
+      registerForm: {
         mobilePhone: "15577777777",
         password: "123"
       }
@@ -58,14 +51,14 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.login_container {
+.register_container {
   position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
 }
-.login_mask {
+.register_mask {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -76,7 +69,7 @@ export default {
   height: 100%;
   z-index: 999;
 }
-.login_box {
+.register_box {
   width: 400px;
   height: 460px;
   background: rgba(255, 255, 255, 1);
@@ -89,7 +82,7 @@ export default {
   z-index: 1000;
   box-sizing: border-box;
 }
-.login_txt {
+.register_txt {
   height: 54px;
   line-height: 54px;
   text-align: center;
@@ -98,24 +91,24 @@ export default {
   font-weight: 700;
   margin-bottom: 30px;
 }
-.login_input {
+.register_input {
   margin-bottom: 21px;
 }
-.login_msg {
+.register_msg {
   padding: 0 13px;
   margin-bottom: 70px;
   font-size: 14px;
 }
-.login_msg_login {
+.register_msg_register {
   float: left;
 }
-.login_msg_forget {
+.register_msg_forget {
   float: right;
 }
-.login_btn {
+.register_btn {
   margin-bottom: 34px;
 }
-.login_btn_pink {
+.register_btn_pink {
   width: 100%;
   background: linear-gradient(
     90deg,
@@ -126,14 +119,14 @@ export default {
   font-size: 16px;
   color: #fff;
 }
-.login_register a {
+.register_register a {
   float: right;
 }
-.login_register_no {
+.register_register_no {
   font-size: 12px;
   color: #afafaf;
 }
-.login_register_now {
+.register_register_now {
   font-size: 12px;
   color: #ff6a94;
 }

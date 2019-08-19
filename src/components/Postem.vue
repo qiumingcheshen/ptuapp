@@ -25,9 +25,11 @@
       </el-col>
       <el-col :xs="12" :sm="5" :md="5" :lg="4" :xl="4">
         <div class="index_header_login">
-          <a href="#">登录</a>
+          <router-link to="/login">登录</router-link>
+          <router-view></router-view>
           <span>|</span>
-          <a href="#">注册</a>
+          <router-link to="/register">注册</router-link>
+          <router-view></router-view>
         </div>
       </el-col>
     </el-row>
@@ -35,40 +37,376 @@
     <!-- 搜索框 -->
     <el-row>
       <el-col :span="24">
-        <div class="postem_search">
-          <el-row>
-            <el-col :span="24">
-              <div class="nav_box_iptdad">
-                <input value="双十一海报" class="nav_box_ipt" />
-                <a href="#" class="navinput_icon el-icon-search"></a>
-              </div>
-            </el-col>
-          </el-row>
+        <div class="grid-content bg-purple-dark index_nav">
+          <div class="index_nav_box">
+            <!-- 搜索框 -->
+            <el-row>
+              <el-col :span="24">
+                <div class="nav_box_iptdad">
+                  <input value="双十一海报" class="nav_box_ipt" />
+                  <a href="#" class="navinput_icon el-icon-search"></a>
+                </div>
+              </el-col>
+            </el-row>
+            <!-- 热门搜索 -->
+            <el-row>
+              <el-col :span="24">
+                <div class="nav_box_hotsearch">
+                  <span>热门搜索 :</span>
+                  <a href="javascript:;">七夕</a>
+                  <a href="javascript:;">立秋</a>
+                  <a href="javascript:;">促销</a>
+                  <a href="javascript:;">母婴亲子</a>
+                  <a href="javascript:;">代购晒产品</a>
+                </div>
+              </el-col>
+            </el-row>
+          </div>
         </div>
       </el-col>
     </el-row>
+    <!-- postem header start -->
+
+    <!-- template category  start  -->
+    <div class="templateCate w">
+      <!-- 面包屑导航 -->
+      <div class="templateCate_nav">
+        <el-breadcrumb separator-class="el-icon-arrow-right">
+          <el-breadcrumb-item :to="{ path: '/' }">当前位置 :首页</el-breadcrumb-item>
+          <el-breadcrumb-item>海报模板</el-breadcrumb-item>
+        </el-breadcrumb>
+      </div>
+      <!-- 模板信息 -->
+      <div class="template_info">
+        <div class="template_info_cate">
+          <dl>
+            <dt>
+              <a href="javascript:;">类别</a>
+            </dt>
+            <dd>
+              <a href="javascript:;">全部</a>
+            </dd>
+            <dd>
+              <a href="javascript:;">七夕</a>
+            </dd>
+            <dd>
+              <a href="javascript:;">立秋</a>
+            </dd>
+            <dd>
+              <a href="javascript:;">促销</a>
+            </dd>
+            <dd>
+              <a href="javascript:;">母婴亲子</a>
+            </dd>
+            <dd>
+              <a href="javascript:;">代购晒产品</a>
+            </dd>
+            <dd>
+              <a href="javascript:;">七夕</a>
+            </dd>
+            <dd>
+              <a href="javascript:;">立秋</a>
+            </dd>
+            <dd>
+              <a href="javascript:;">促销</a>
+            </dd>
+            <dd>
+              <a href="javascript:;">母婴亲子</a>
+            </dd>
+          </dl>
+          <div class="checkAll">
+            <a href="javascript:;">
+              <span>查看更多</span>
+              <i></i>
+            </a>
+          </div>
+        </div>
+        <div class="template_info_style">
+          <dl>
+            <dt>
+              <a href="javascript:;">风格</a>
+            </dt>
+            <dd>
+              <a href="javascript:;">全部</a>
+            </dd>
+            <dd>
+              <a href="javascript:;">简约</a>
+            </dd>
+            <dd>
+              <a href="javascript:;">卡通</a>
+            </dd>
+            <dd>
+              <a href="javascript:;">欧美</a>
+            </dd>
+            <dd>
+              <a href="javascript:;">古风</a>
+            </dd>
+          </dl>
+        </div>
+        <div class="template_info_type">
+          <dl>
+            <dt>
+              <a href="javascript:;">板式</a>
+            </dt>
+            <dd>
+              <a href="javascript:;">全部</a>
+            </dd>
+            <dd>
+              <a href="javascript:;">横图</a>
+            </dd>
+            <dd>
+              <a href="javascript:;">竖图</a>
+            </dd>
+            <dd>
+              <a href="javascript:;">方图</a>
+            </dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+    <!-- template category  end  -->
+
+    <!-- posterItem start -->
+    <div class="w posterItemBox">
+      <ul>
+        <li>
+          <a href="javascript:;">
+            <img src="../assets/images/posterTem_01.jpg" alt />
+          </a>
+        </li>
+        <li>
+          <a href="javascript:;">
+            <img src="../assets/images/posterTem_01.jpg" alt />
+          </a>
+        </li>
+        <li>
+          <a href="javascript:;">
+            <img src="../assets/images/posterTem_01.jpg" alt />
+          </a>
+        </li>
+        <li>
+          <a href="javascript:;">
+            <img src="../assets/images/posterTem_01.jpg" alt />
+          </a>
+        </li>
+        <li>
+          <a href="javascript:;">
+            <img src="../assets/images/posterTem_01.jpg" alt />
+          </a>
+        </li>
+        <li>
+          <a href="javascript:;">
+            <img src="../assets/images/posterTem_01.jpg" alt />
+          </a>
+        </li>
+        <li>
+          <a href="javascript:;">
+            <img src="../assets/images/posterTem_01.jpg" alt />
+          </a>
+        </li>
+        <li>
+          <a href="javascript:;">
+            <img src="../assets/images/posterTem_01.jpg" alt />
+          </a>
+        </li>
+        <li>
+          <a href="javascript:;">
+            <img src="../assets/images/posterTem_01.jpg" alt />
+          </a>
+        </li>
+        <li>
+          <a href="javascript:;">
+            <img src="../assets/images/posterTem_01.jpg" alt />
+          </a>
+        </li>
+        <li>
+          <a href="javascript:;">
+            <img src="../assets/images/posterTem_01.jpg" alt />
+          </a>
+        </li>
+        <li>
+          <a href="javascript:;">
+            <img src="../assets/images/posterTem_01.jpg" alt />
+          </a>
+        </li>
+        <li>
+          <a href="javascript:;">
+            <img src="../assets/images/posterTem_01.jpg" alt />
+          </a>
+        </li>
+        <li>
+          <a href="javascript:;">
+            <img src="../assets/images/posterTem_01.jpg" alt />
+          </a>
+        </li>
+        <li>
+          <a href="javascript:;">
+            <img src="../assets/images/posterTem_01.jpg" alt />
+          </a>
+        </li>
+        <li>
+          <a href="javascript:;">
+            <img src="../assets/images/posterTem_01.jpg" alt />
+          </a>
+        </li>
+        <li>
+          <a href="javascript:;">
+            <img src="../assets/images/posterTem_01.jpg" alt />
+          </a>
+        </li>
+        <li>
+          <a href="javascript:;">
+            <img src="../assets/images/posterTem_01.jpg" alt />
+          </a>
+        </li>
+        <li>
+          <a href="javascript:;">
+            <img src="../assets/images/posterTem_01.jpg" alt />
+          </a>
+        </li>
+        <li>
+          <a href="javascript:;">
+            <img src="../assets/images/posterTem_01.jpg" alt />
+          </a>
+        </li>
+        <li>
+          <a href="javascript:;">
+            <img src="../assets/images/posterTem_01.jpg" alt />
+          </a>
+        </li>
+        <li>
+          <a href="javascript:;">
+            <img src="../assets/images/posterTem_01.jpg" alt />
+          </a>
+        </li>
+        <li>
+          <a href="javascript:;">
+            <img src="../assets/images/posterTem_01.jpg" alt />
+          </a>
+        </li>
+        <li>
+          <a href="javascript:;">
+            <img src="../assets/images/posterTem_01.jpg" alt />
+          </a>
+        </li>
+      </ul>
+    </div>
+    <!-- posterItem end -->
+
+    <!-- pageNum start -->
+    <div class="w pageNum">
+      <div class="block">
+        <el-pagination
+          background
+          :pager-count="9"
+          @current-change="handleCurrentChange"
+          :current-page="currentPage4"
+          :page-sizes="[100, 200, 300, 400]"
+          :page-size="1"
+          layout="pager, next, total, jumper"
+          next-text="下一页"
+          :total="255"
+        ></el-pagination>
+      </div>
+    </div>
+    <!-- pageNum end -->
+
+    <!-- footer start -->
     <el-row>
       <el-col :span="24">
-        <div class="nav_box_hotsearch">
-          <span>热门搜索 :</span>
-          <a href="javascript:;">七夕</a>
-          <a href="javascript:;">立秋</a>
-          <a href="javascript:;">促销</a>
-          <a href="javascript:;">母婴亲子</a>
-          <a href="javascript:;">代购晒产品</a>
+        <div class="foorerBox">
+          <div class="footer">
+            <el-row :gutter="10">
+              <el-col :xs="8" :sm="8" :md="7" :lg="6" :xl="6">
+                <div class="footer_logo">
+                  <img src="../assets/images/footer_01.jpg" alt />
+                </div>
+              </el-col>
+              <el-col :xs="8" :sm="8" :md="10" :lg="12" :xl="12">
+                <div class="footer_infos">
+                  <dl>
+                    <dt>海报模板</dt>
+                    <dd>
+                      <a href="javascript:;">专题一</a>
+                    </dd>
+                    <dd>
+                      <a href="javascript:;">专题二</a>
+                    </dd>
+                    <dd>
+                      <a href="javascript:;">专题三</a>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="footer_infos">
+                  <dl>
+                    <dt>关于我们</dt>
+                    <dd>
+                      <a href="javascript:;">公司介绍</a>
+                    </dd>
+                    <dd>
+                      <a href="javascript:;">新闻中心</a>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="footer_infos">
+                  <dl>
+                    <dt>联系我们</dt>
+                    <dd>
+                      <a href="javascript:;">QQ： 1647685232</a>
+                    </dd>
+                    <dd>
+                      <a href="javascript:;">电话： 0731-82290973</a>
+                    </dd>
+                  </dl>
+                </div>
+              </el-col>
+              <el-col :xs="8" :sm="8" :md="7" :lg="6" :xl="6">
+                <div class="footer_contact">
+                  <a href="javascript:;">
+                    <img src="../assets/images/footer_02.jpg" alt />
+                  </a>
+                  <a href="javascript:;">
+                    <img src="../assets/images/footer_03.jpg" alt />
+                  </a>
+                </div>
+              </el-col>
+            </el-row>
+          </div>
+          <div
+            class="companyInfo"
+          >Copyright © 2018 All Rights Reserved 湖南惠人网络科技有限公司 湘公网安备 43019002000704号 湘ICP备17004594号</div>
         </div>
       </el-col>
     </el-row>
 
-    <!-- postem header start -->
+    <!-- footer end -->
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    handleCurrentChange(val) {
+      console.log(`当前页: ${val}`);
+    }
+  },
+  data() {
+    return {
+      currentPage1: 5,
+      currentPage2: 5,
+      currentPage3: 5,
+      currentPage4: 4
+    };
+  }
+};
 </script>
 
 <style lang="less" scoped>
+// 版心
+.w {
+  width: 1200px;
+  margin: 0 auto;
+}
 // index header start
 
 .index_container_header {
@@ -109,12 +447,17 @@ export default {};
     color: #000;
   }
 }
-// 搜索框
-.postem_search {
-  max-width: 1200px;
-  margin: 135px auto 0;
+// index_nav start
+.index_nav {
+  padding-top: 130px;
+  text-align: center;
 }
-
+.index_nav_box {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+// 搜索框
 .nav_box_iptdad {
   width: 70%;
   position: relative;
@@ -166,4 +509,181 @@ export default {};
   }
 }
 // index header end
+
+// template category  start
+.templateCate {
+  height: 260px;
+  background-color: #fff;
+  margin-top: 50px;
+  padding: 30px;
+}
+.templateCate_nav {
+  height: 40px;
+  line-height: 40px;
+  border-bottom: 1px solid #e5e5e5;
+  margin-bottom: 40px;
+}
+el-breadcrumb-item {
+  color: #666;
+  font-size: 14px;
+  font-weight: 400 !important;
+}
+.template_info {
+  height: 126px;
+  width: 100%;
+}
+.template_info_cate,
+.template_info_style,
+.template_info_type {
+  height: 43px;
+  font-size: 14px;
+  color: #666;
+  text-align: center;
+  dt {
+    float: left;
+    height: 30px;
+    line-height: 30px;
+    margin-right: 20px;
+    a {
+      color: #666;
+    }
+  }
+  dd {
+    display: block;
+    float: left;
+    height: 30px;
+    line-height: 14px;
+    margin: 0 12px;
+    border-radius: 15px;
+    a {
+      display: block;
+      padding: 9px 14px;
+      color: #666;
+      font-size: 14px;
+      line-height: 14px;
+    }
+    a:hover {
+      background-color: #ffd2df;
+      color: #ff6a94;
+      border-radius: 15px;
+    }
+  }
+}
+.template_info_cate .checkAll {
+  float: right;
+  width: 120px;
+  height: 36px;
+  background-color: #f4f4f4;
+  border-radius: 18px;
+  a {
+    display: block;
+    width: 120px;
+    height: 36px;
+    line-height: 36px;
+    text-align: center;
+  }
+  span {
+    color: #333;
+  }
+  i {
+    display: inline-block;
+    width: 12px;
+    height: 9px;
+    background: url(../assets/images/arrowdown.png) no-repeat;
+    background-size: 12px 9px;
+    margin-left: 9px;
+  }
+}
+// template category  end
+
+// posterItem start
+.posterItemBox {
+  // height: 3500px;
+  margin-top: 60px;
+  ul {
+    overflow: hidden;
+    width: 1200px;
+    li {
+      float: left;
+      width: 279px;
+      height: 468px;
+      margin-right: 28px;
+      margin-bottom: 30px;
+      background: rgba(255, 255, 255, 1);
+      box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.2);
+      border-radius: 6px;
+      padding: 30px 25px;
+      a {
+        display: block;
+        width: 100%;
+      }
+    }
+    li:nth-child(4n) {
+      margin-right: 0;
+    }
+  }
+}
+// 瀑布流 css
+
+// pageNum start
+.pageNum {
+  height: 50px;
+  line-height: 50px;
+  margin: 80px auto 0;
+  text-align: center;
+}
+// pageNum end
+
+// footer start
+.foorerBox {
+  background-color: #1e1b1b;
+  margin-top: 100px;
+  height: 280px;
+}
+
+.footer {
+  max-width: 1200px;
+  height: 200px;
+  margin: 0 auto;
+  padding-top: 30px;
+  text-align: center;
+}
+
+.footer_logo {
+  width: 200px;
+  height: 50px;
+}
+
+.footer_infos {
+  float: left;
+  width: 33.33%;
+  text-align: left;
+  dd {
+    margin-top: 10px;
+    color: #fff;
+  }
+  a {
+    color: #afafaf;
+  }
+}
+
+.footer_contact {
+  float: right;
+  a {
+    margin-left: 60px;
+  }
+}
+
+.companyInfo {
+  max-width: 1200px;
+  height: 80px;
+  margin: 0 auto;
+  border-top: 1px solid #464334;
+  text-align: center;
+  line-height: 80px;
+  font-size: 12px;
+  color: #666;
+}
+
+// footer end
 </style>

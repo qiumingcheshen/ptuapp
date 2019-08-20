@@ -19,35 +19,49 @@
           <a href="javascript:;">保存</a>
         </el-col>
       </el-row>
-      <el-row class="editContent">
-        <el-col class="editContentAside">
-          <a href="#" class="asideTem" @click="display = true">
-            <i></i>
-            <p>模板</p>
-          </a>
-          <a href="javascript:;" class="asideUpload">
-            <i></i>
-            <p>上传</p>
-          </a>
-          <a href="javascript:;" class="asideCollect">
-            <i></i>
-            <p>我的收藏</p>
-          </a>
-          <a href="javascript:;" class="asidePoster">
-            <i></i>
-            <p>我的海报</p>
-          </a>
-          <drawer
-            title="我是一个抽屉组件"
-            :display.sync="display"
-            :inner="true"
-            :width="drawerWidth"
-            :mask="false"
-          >
-            1. Hello, world!
-            2. Do you like it?
-          </drawer>
-        </el-col>
+      <div class="editContent">
+        <!-- 侧边栏区域 -->
+        <div class="editContentAside">
+          <ul>
+            <li v-for="(item, index) in asideTabs" :key="index" @click="flag = !flag">
+              <router-link :to="item.address">
+                <i></i>
+                <p>{{item.asidename}}</p>
+              </router-link>
+            </li>
+
+            <!-- <li>
+              <router-link to="/asideTem" class="asideTem">
+                <i></i>
+                <p>模板</p>
+              </router-link>
+            </li>
+            <li>
+              <router-link to="/asideUpload" class="asideUpload">
+                <i></i>
+                <p>上传</p>
+              </router-link>
+            </li>
+            <li>
+              <router-link to="/asideCollect" class="asideCollect">
+                <i></i>
+                <p>我的收藏</p>
+              </router-link>
+            </li>
+            <li>
+              <router-link to="/asidePoster" class="asidePoster">
+                <i></i>
+                <p>我的海报</p>
+              </router-link>
+            </li>-->
+          </ul>
+        </div>
+
+        <!-- 侧边栏展开区域 -->
+        <div class="asideUnfold" :style="mainstyle">
+          <router-view></router-view>
+        </div>
+
         <!-- 中间的海报区域 -->
         <el-col class="posArea">
           <div class="posAreaImg"></div>
@@ -148,23 +162,36 @@
             </div>
           </div>
         </el-col>
-      </el-row>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import Editdrawer from "./EditposDrawer";
 export default {
-  // 把自己定义的抽屉组件暴露出去
-  components: {
-    drawer: Editdrawer
-  },
   data() {
     return {
-      // 抽屉的属性
-      display: false,
-      drawerWidth: "500px",
+      // 控制展开栏的显示与隐藏
+      flag: false,
+      // 侧边栏 tab 的数据
+      asideTabs: [
+        {
+          asidename: "模板",
+          address: "/asideTem"
+        },
+        {
+          asidename: "上传",
+          address: "/asideUpload"
+        },
+        {
+          asidename: "我的收藏",
+          address: "/asideCollect"
+        },
+        {
+          asidename: "我的海报",
+          address: "/asidePoster"
+        }
+      ],
       // 字体类型
       FontType: [
         {
@@ -365,12 +392,15 @@ export default {
       IntervalValue: ""
     };
   },
-  methods: {
-    // 打开抽屉
-    visible() {
-      this.drawerVisible = true;
+  computed: {
+    mainstyle: function() {
+      return {
+        left: this.flag ? "100px" : "-230px",
+        opacity: 1
+      };
     }
-  }
+  },
+  methods: {}
 };
 </script>
 
@@ -425,27 +455,34 @@ export default {
     display: block;
     width: 50px;
     height: 30px;
-    background-color: #b99;
+    background: linear-gradient(
+      90deg,
+      rgba(255, 117, 140, 1),
+      rgba(255, 126, 179, 1)
+    );
     text-align: center;
     line-height: 30px;
   }
 }
 // 编辑区域
 .editContent {
-  width: 100%;
+  overflow: hidden;
   display: flex;
-  height: 862px;
   position: absolute;
   top: 60px;
+  width: 100%;
+  height: 862px;
 }
 // 左侧导航栏 css
 
 .editContentAside {
-  position: relative;
+  position: absolute;
   width: 100px;
   height: 862px;
   padding-top: 55px;
+  background-color: #fff;
   box-shadow: 2px 0 5px 0 rgba(0, 0, 0, 0.05);
+  z-index: 10;
   a {
     display: block;
     width: 100px;
@@ -460,6 +497,8 @@ export default {
       height: 30px;
       background-color: #b67;
       margin-left: 35px;
+      background: url("../assets/images/editAside_00.png");
+      background-size: 30px 30px !important;
     }
     p {
       display: block;
@@ -471,6 +510,17 @@ export default {
       text-align: center;
     }
   }
+}
+// 侧边栏展开区域
+.asideUnfold {
+  position: absolute;
+  top: 0;
+  left: -230px;
+  width: 330px;
+  height: 862px;
+  background-color: #fff;
+  transition: all 0.5s;
+  z-index: 9;
 }
 
 // 中间的海报区域
@@ -511,7 +561,6 @@ export default {
 }
 .editAreaType {
   height: 135px;
-  // margin-bottom: 20px;
   p {
     margin-bottom: 15px;
     font-size: 12px;

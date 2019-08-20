@@ -17,7 +17,6 @@ import {
     Select,
     Option,
     ColorPicker,
-    Drawer
 
 } from 'element-ui'
 
@@ -38,4 +37,3 @@ Vue.use(Main)
 Vue.use(Select)
 Vue.use(Option)
 Vue.use(ColorPicker)
-Vue.use(Drawer)

@@ -70,6 +70,7 @@
                 </div>
               </el-col>
             </el-row>
+
             <!-- 轮播图 -->
             <el-row>
               <el-col :span="24">
@@ -92,7 +93,6 @@
     <!-- index nav end -->
 
     <!-- category start -->
-
     <div class="category">
       <el-row :gutter="10">
         <el-col :xs="24" :sm="24" :md="24" :lg="8" :xl="8">
@@ -825,6 +825,7 @@ export default {};
   span {
     margin: 0 10px;
     vertical-align: 0;
+    color: #fff;
   }
 }
 // index header end
@@ -847,6 +848,7 @@ export default {};
   font-size: 48px;
   letter-spacing: 5px;
   padding: 20px 0;
+  color: #fff;
 }
 // 搜索框
 .nav_box_iptdad {

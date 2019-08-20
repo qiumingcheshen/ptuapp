@@ -5,7 +5,10 @@ import Login from './components/Login.vue'
 import Register from './components/Register.vue'
 import Postem from './components/Postem.vue'
 import Editpos from './components/Editpos.vue'
-import EditposDrawer from './components/EditposDrawer.vue'
+import AsideTem from './components/asideUnfoldArea/AsideTem.vue'
+import AsideUpload from './components/asideUnfoldArea/AsideUpload.vue'
+import AsidePoster from './components/asideUnfoldArea/AsidePoster.vue'
+import AsideCollect from './components/asideUnfoldArea/AsideCollect.vue'
 
 Vue.use(Router)
 
@@ -29,7 +32,13 @@ export default new Router({
         {
             path: '/editpos',
             component: Editpos,
-            children: [{ path: '/drawer', component: EditposDrawer }]
+            children: [
+              { path: '/', redirect: '/AsideTem' },
+              { path: '/asideTem', component: AsideTem },
+              { path: '/asideUpload', component: AsideUpload },
+              { path: '/asideCollect', component: AsideCollect },
+              { path: '/asidePoster', component: AsidePoster },
+            ]
         },
 
 

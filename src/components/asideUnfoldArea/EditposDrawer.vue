@@ -17,7 +17,8 @@ export default {
   props: {
     // 是否打开
     display: {
-      type: Boolean
+      type: Boolean,
+      default: false
     },
     // 标题
     title: {
@@ -68,7 +69,7 @@ export default {
     mainStyle: function() {
       return {
         width: this.width,
-        right: this.display ? "0" : `-${this.width}`,
+        left: this.display ? "100px" : `-${this.width}`,
         borderLeft: this.mask ? "none" : "1px solid #eee"
       };
     }

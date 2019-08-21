@@ -4,13 +4,19 @@
     <div class="uploadExplain">支持12M以下JPG\PNG\GIF格式图片</div>
     <div class="uploadHandle">
       <a href="#" class="uploadLocalImg">上传</a>
-      <a href="#" class="uploadPhoneImg">上传手机图片</a>
+      <a href="javascript:;" @click="uploadPhoneImg" class="uploadPhoneImg">上传手机图片</a>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    uploadPhoneImg() {
+      this.$router.push("/goUploadPhone");
+    }
+  }
+};
 </script>
 
 <style lang="less" scoped>

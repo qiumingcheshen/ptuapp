@@ -3,7 +3,11 @@
     <div>
       <el-row class="editContainerHeader">
         <el-col class="editPosLogo" :span="3">
-          <img src="../assets/images/logo.png" alt />
+          <h1>
+            <a href="/index">
+              <img src="../assets/images/logo2.png" alt />
+            </a>
+          </h1>
         </el-col>
         <el-col class="editPosColl" :span="18">
           <div class="posCollect">
@@ -23,37 +27,37 @@
         <!-- 侧边栏区域 -->
         <div class="editContentAside">
           <ul>
-            <li v-for="(item, index) in asideTabs" :key="index" @click="flag = !flag">
+            <!-- <li v-for="(item, index) in asideTabs" :key="index" @click="flag = !flag">
               <router-link :to="item.address">
-                <i></i>
+                <i :style="item.asideBackGround"></i>
                 <p>{{item.asidename}}</p>
               </router-link>
-            </li>
+            </li>-->
 
-            <!-- <li>
+            <li @click="flag = !flag">
               <router-link to="/asideTem" class="asideTem">
                 <i></i>
                 <p>模板</p>
               </router-link>
             </li>
-            <li>
+            <li @click="flag = !flag">
               <router-link to="/asideUpload" class="asideUpload">
                 <i></i>
                 <p>上传</p>
               </router-link>
             </li>
-            <li>
+            <li @click="flag = !flag">
               <router-link to="/asideCollect" class="asideCollect">
                 <i></i>
                 <p>我的收藏</p>
               </router-link>
             </li>
-            <li>
+            <li @click="flag = !flag">
               <router-link to="/asidePoster" class="asidePoster">
                 <i></i>
                 <p>我的海报</p>
               </router-link>
-            </li>-->
+            </li>
           </ul>
         </div>
 
@@ -105,32 +109,48 @@
             <div class="editAreaTypeBox">
               <ul>
                 <li>
-                  <a href="javascript:;"></a>
+                  <el-tooltip content="加粗" placement="top">
+                    <a href="javascript:;" class="overstriking"></a>
+                  </el-tooltip>
                 </li>
                 <li>
-                  <a href="javascript:;"></a>
+                  <el-tooltip content="斜体" placement="top">
+                    <a href="javascript:;" class="italic"></a>
+                  </el-tooltip>
                 </li>
                 <li>
-                  <a href="javascript:;"></a>
+                  <el-tooltip content="下划线" placement="top">
+                    <a href="javascript:;" class="underline"></a>
+                  </el-tooltip>
                 </li>
                 <li>
-                  <a href="javascript:;"></a>
+                  <el-tooltip content="删除线" placement="top">
+                    <a href="javascript:;" class="delete"></a>
+                  </el-tooltip>
                 </li>
               </ul>
             </div>
             <div class="editAreaTypeBox">
               <ul>
                 <li>
-                  <a href="javascript:;"></a>
+                  <el-tooltip content="文字方向" placement="bottom">
+                    <a href="javascript:;" class="textDirection"></a>
+                  </el-tooltip>
                 </li>
                 <li>
-                  <a href="javascript:;"></a>
+                  <el-tooltip content="左对齐" placement="bottom">
+                    <a href="javascript:;" class="textLeft"></a>
+                  </el-tooltip>
                 </li>
                 <li>
-                  <a href="javascript:;"></a>
+                  <el-tooltip content="居中" placement="bottom">
+                    <a href="javascript:;" class="textMiddle"></a>
+                  </el-tooltip>
                 </li>
                 <li>
-                  <a href="javascript:;"></a>
+                  <el-tooltip content="右对齐" placement="bottom">
+                    <a href="javascript:;" class="textRight"></a>
+                  </el-tooltip>
                 </li>
               </ul>
             </div>
@@ -173,25 +193,7 @@ export default {
     return {
       // 控制展开栏的显示与隐藏
       flag: false,
-      // 侧边栏 tab 的数据
-      asideTabs: [
-        {
-          asidename: "模板",
-          address: "/asideTem"
-        },
-        {
-          asidename: "上传",
-          address: "/asideUpload"
-        },
-        {
-          asidename: "我的收藏",
-          address: "/asideCollect"
-        },
-        {
-          asidename: "我的海报",
-          address: "/asidePoster"
-        }
-      ],
+
       // 字体类型
       FontType: [
         {
@@ -393,6 +395,7 @@ export default {
     };
   },
   computed: {
+    // 侧边栏展开盒子的左定位
     mainstyle: function() {
       return {
         left: this.flag ? "100px" : "-230px",
@@ -417,9 +420,18 @@ export default {
 .editContainerHeader {
   height: 60px;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.05);
+  a {
+    display: block;
+    width: 135px;
+    height: 35px;
+  }
 }
 .editPosLogo {
   padding: 13px 35px;
+  img {
+    width: 135px;
+    height: 35px;
+  }
 }
 .editPosColl {
   padding-left: 100px;
@@ -433,19 +445,21 @@ export default {
 }
 .posCollect i {
   display: inline-block;
-  width: 18px;
+  width: 19px;
+  height: 19px;
+  background-color: red;
+  vertical-align: middle;
+  margin-right: 10px;
+  background: url(../assets/images/icons.png) -301px -425px no-repeat;
+}
+.posPreview i {
+  display: inline-block;
+  width: 26px;
   height: 18px;
   background-color: red;
   vertical-align: middle;
   margin-right: 10px;
-}
-.posPreview i {
-  display: inline-block;
-  width: 23px;
-  height: 16px;
-  background-color: red;
-  vertical-align: middle;
-  margin-right: 10px;
+  background: url(../assets/images/icons.png) -266px -425px no-repeat;
 }
 .editPosSave {
   height: 60px;
@@ -455,6 +469,7 @@ export default {
     display: block;
     width: 50px;
     height: 30px;
+    border-radius: 6px;
     background: linear-gradient(
       90deg,
       rgba(255, 117, 140, 1),
@@ -497,9 +512,9 @@ export default {
       height: 30px;
       background-color: #b67;
       margin-left: 35px;
-      background: url("../assets/images/editAside_00.png");
-      background-size: 30px 30px !important;
+      background: url("../assets/images/icons.png") no-repeat;
     }
+
     p {
       display: block;
       width: 100px;
@@ -509,6 +524,18 @@ export default {
       color: #666;
       text-align: center;
     }
+  }
+  .asideTem i {
+    background-position: -185px -363px;
+  }
+  .asideUpload i {
+    background-position: -243px -363px;
+  }
+  .asideCollect i {
+    background-position: -69px -363px;
+  }
+  .asidePoster i {
+    background-position: -128px -363px;
   }
 }
 // 侧边栏展开区域
@@ -527,6 +554,7 @@ export default {
 .posArea {
   display: flex;
   flex: 1;
+  margin-left: 100px;
   justify-content: center;
   align-items: center;
   background-color: #f7f4f5;
@@ -572,25 +600,50 @@ export default {
     border: 1px solid rgba(225, 225, 225, 1);
     border-radius: 6px;
     margin-bottom: 20px;
-    padding: 14px 0;
+    padding: 12px 0;
     ul {
       overflow: hidden;
       li {
         float: left;
         width: 52px;
-        height: 15px;
+        height: 20px;
         border-right: 1px solid #f0f2f5;
         padding: 0 18px;
         a {
           display: block;
-          width: 15px;
-          height: 15px;
+          width: 20px;
+          height: 20px;
           background-color: #e51;
+          background: url(../assets/images/icons.png) no-repeat;
         }
       }
       li:last-child {
         border-right: none;
       }
+    }
+    .overstriking {
+      background-position: -104px -424px;
+    }
+    .italic {
+      background-position: -4px -424px;
+    }
+    .underline {
+      background-position: -36px -424px;
+    }
+    .delete {
+      background-position: -69px -424px;
+    }
+    .textDirection {
+      background-position: -136px -424px;
+    }
+    .textLeft {
+      background-position: -234px -423px;
+    }
+    .textMiddle {
+      background-position: -169px -423px;
+    }
+    .textRight {
+      background-position: -202px -423px;
     }
   }
 }

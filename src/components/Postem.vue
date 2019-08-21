@@ -5,17 +5,17 @@
     <el-row :gutter="10" class="index_container_header">
       <el-col :xs="12" :sm="5" :md="5" :lg="4" :xl="4">
         <div class="grid-content bg-purple">
-          <img src="../assets/images/logo.png" alt />
+          <img src="../assets/images/logo2.png" alt />
         </div>
       </el-col>
       <el-col :sm="14" :md="14" :lg="16" :xl="16" class="hidden-xs-only">
         <div class="grid-content bg-purple-light index_container_tab">
           <ul>
             <li>
-              <a href="#">首页</a>
+              <router-link to="/index">首页</router-link>
             </li>
             <li>
-              <a href="#">海报模板</a>
+              <a href="#" class="active">海报模板</a>
             </li>
             <li>
               <a href="#">客户端下载</a>
@@ -43,7 +43,7 @@
             <el-row>
               <el-col :span="24">
                 <div class="nav_box_iptdad">
-                  <input value="双十一海报" class="nav_box_ipt" />
+                  <input placeholder="双十一海报" class="nav_box_ipt" />
                   <a href="#" class="navinput_icon el-icon-search"></a>
                 </div>
               </el-col>
@@ -362,12 +362,8 @@
               </el-col>
               <el-col :xs="8" :sm="8" :md="7" :lg="6" :xl="6">
                 <div class="footer_contact">
-                  <a href="javascript:;">
-                    <img src="../assets/images/footer_02.jpg" alt />
-                  </a>
-                  <a href="javascript:;">
-                    <img src="../assets/images/footer_03.jpg" alt />
-                  </a>
+                  <a href="javascript:;" class="phoneIcon"></a>
+                  <a href="javascript:;" class="weixinIcon"></a>
                 </div>
               </el-col>
             </el-row>
@@ -419,6 +415,10 @@ export default {
   padding: 13px 35px;
   z-index: 999;
   box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.05);
+  img {
+    width: 135px;
+    height: 35px;
+  }
 }
 .index_container_tab ul {
   overflow: hidden;
@@ -431,6 +431,9 @@ export default {
     a {
       color: #000;
     }
+  }
+  li a.active {
+    color: #ff6a94;
   }
 }
 .index_header_login {
@@ -472,6 +475,10 @@ export default {
   border: none;
   padding-left: 43px;
   font-size: 14px;
+  color: #000;
+}
+.nav_box_ipt::placeholder {
+  font-size: 14px;
   color: #afafaf;
 }
 .navinput_icon {
@@ -481,7 +488,9 @@ export default {
   top: 0;
   width: 13%;
   height: 50px;
+  line-height: 50px;
   border-radius: 0 25px 25px 0;
+  font-size: 28px;
   background: linear-gradient(
     90deg,
     rgba(255, 117, 140, 1),
@@ -658,6 +667,9 @@ el-breadcrumb-item {
   float: left;
   width: 33.33%;
   text-align: left;
+  dt {
+    color: #fff;
+  }
   dd {
     margin-top: 10px;
     color: #fff;
@@ -670,7 +682,17 @@ el-breadcrumb-item {
 .footer_contact {
   float: right;
   a {
-    margin-left: 60px;
+    float: left;
+    width: 32px;
+    height: 28px;
+    display: block;
+  }
+  .phoneIcon {
+    background: url(../assets/images/icons.png) -244px -84px no-repeat;
+  }
+  .weixinIcon {
+    margin-left: 40px;
+    background: url(../assets/images/icons.png) -198px -83px no-repeat;
   }
 }
 

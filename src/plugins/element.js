@@ -17,7 +17,7 @@ import {
     Select,
     Option,
     ColorPicker,
-
+    Tooltip
 } from 'element-ui'
 
 Vue.use(Button)
@@ -37,3 +37,4 @@ Vue.use(Main)
 Vue.use(Select)
 Vue.use(Option)
 Vue.use(ColorPicker)
+Vue.use(Tooltip)

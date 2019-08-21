@@ -5,17 +5,21 @@
     <el-row :gutter="10" class="index_container_header">
       <el-col :xs="12" :sm="5" :md="5" :lg="4" :xl="4">
         <div class="grid-content bg-purple">
-          <img src="../assets/images/logo.png" alt />
+          <h1>
+            <a href="/index" class="logoBoxa">
+              <img src="../assets/images/logo.png" alt="拼图工厂" title="拼图工厂" />
+            </a>
+          </h1>
         </div>
       </el-col>
       <el-col :sm="14" :md="14" :lg="16" :xl="16" class="hidden-xs-only">
         <div class="grid-content bg-purple-light index_container_tab">
           <ul>
             <li>
-              <a href="#">首页</a>
+              <router-link to="/index">首页</router-link>
             </li>
             <li>
-              <a href="#">海报模板</a>
+              <router-link to="/postem">海报模板</router-link>
             </li>
             <li>
               <a href="#">客户端下载</a>
@@ -26,7 +30,6 @@
       <el-col :xs="12" :sm="5" :md="5" :lg="4" :xl="4">
         <div class="index_header_login">
           <router-link to="/login">登录</router-link>
-          <router-view></router-view>
           <span>|</span>
           <router-link to="/register">注册</router-link>
           <router-view></router-view>
@@ -52,7 +55,7 @@
             <el-row>
               <el-col :span="24">
                 <div class="nav_box_iptdad">
-                  <input value="双十一海报" class="nav_box_ipt" />
+                  <input placeholder="双十一海报" class="nav_box_ipt" />
                   <a href="#" class="navinput_icon el-icon-search"></a>
                 </div>
               </el-col>
@@ -75,13 +78,35 @@
             <el-row>
               <el-col :span="24">
                 <div class="nav_box_slideshow">
-                  <template>
-                    <el-carousel :interval="4000" type="card" height="175px">
-                      <el-carousel-item v-for="item in 3" :key="item">
-                        <h3 class="medium">{{ item }}</h3>
-                      </el-carousel-item>
-                    </el-carousel>
-                  </template>
+                  <swiper :options="swiperOption">
+                    <swiper-slide>
+                      <img src="../assets/images/slideshow_01.jpg" alt />
+                    </swiper-slide>
+                    <swiper-slide>
+                      <img src="../assets/images/slideshow_02.jpg" alt />
+                    </swiper-slide>
+                    <swiper-slide>
+                      <img src="../assets/images/slideshow_03.jpg" alt />
+                    </swiper-slide>
+                    <swiper-slide>
+                      <img src="../assets/images/slideshow_04.jpg" alt />
+                    </swiper-slide>
+                    <swiper-slide>
+                      <img src="../assets/images/slideshow_01.jpg" alt />
+                    </swiper-slide>
+                    <swiper-slide>
+                      <img src="../assets/images/slideshow_02.jpg" alt />
+                    </swiper-slide>
+                    <swiper-slide>
+                      <img src="../assets/images/slideshow_03.jpg" alt />
+                    </swiper-slide>
+                    <swiper-slide>
+                      <img src="../assets/images/slideshow_04.jpg" alt />
+                    </swiper-slide>
+                    <!-- <div class="swiper-pagination" slot="pagination"></div> -->
+                    <div class="swiper-button-prev el-icon-arrow-left" slot="button-prev"></div>
+                    <div class="swiper-button-next el-icon-arrow-right" slot="button-next"></div>
+                  </swiper>
                 </div>
               </el-col>
             </el-row>
@@ -98,25 +123,25 @@
         <el-col :xs="24" :sm="24" :md="24" :lg="8" :xl="8">
           <div class="category_left">
             <div class="category_boxs">
-              <div class="category_icons"></div>
+              <div class="category_icons category_icons1"></div>
               <div class="category_name">
                 <a href="#">护肤美妆</a>
               </div>
             </div>
             <div class="category_boxs">
-              <div class="category_icons"></div>
+              <div class="category_icons category_icons2"></div>
               <div class="category_name">
                 <a href="#">美发美甲</a>
               </div>
             </div>
             <div class="category_boxs">
-              <div class="category_icons"></div>
+              <div class="category_icons category_icons3"></div>
               <div class="category_name">
                 <a href="#">保健养生</a>
               </div>
             </div>
             <div class="category_boxs">
-              <div class="category_icons"></div>
+              <div class="category_icons category_icons4"></div>
               <div class="category_name">
                 <a href="#">减肥瘦身</a>
               </div>
@@ -126,25 +151,25 @@
         <el-col :xs="24" :sm="24" :md="24" :lg="8" :xl="8">
           <div class="category_middle">
             <div class="category_boxs">
-              <div class="category_icons"></div>
+              <div class="category_icons category_icons5"></div>
               <div class="category_name">
                 <a href="#">女性私护</a>
               </div>
             </div>
             <div class="category_boxs">
-              <div class="category_icons"></div>
+              <div class="category_icons category_icons6"></div>
               <div class="category_name">
                 <a href="#">母婴亲子</a>
               </div>
             </div>
             <div class="category_boxs">
-              <div class="category_icons"></div>
+              <div class="category_icons category_icons7"></div>
               <div class="category_name">
                 <a href="#">家具清洁</a>
               </div>
             </div>
             <div class="category_boxs">
-              <div class="category_icons"></div>
+              <div class="category_icons category_icons8"></div>
               <div class="category_name">
                 <a href="#">服鞋箱包</a>
               </div>
@@ -154,25 +179,25 @@
         <el-col :xs="24" :sm="24" :md="24" :lg="8" :xl="8">
           <div class="category_right">
             <div class="category_boxs">
-              <div class="category_icons"></div>
+              <div class="category_icons category_icons9"></div>
               <div class="category_name">
                 <a href="#">内衣配饰</a>
               </div>
             </div>
             <div class="category_boxs">
-              <div class="category_icons"></div>
+              <div class="category_icons category_icons10"></div>
               <div class="category_name">
                 <a href="#">情趣计生</a>
               </div>
             </div>
             <div class="category_boxs">
-              <div class="category_icons"></div>
+              <div class="category_icons category_icons11"></div>
               <div class="category_name">
                 <a href="#">综合商城</a>
               </div>
             </div>
             <div class="category_boxs">
-              <div class="category_icons"></div>
+              <div class="category_icons category_icons12"></div>
               <div class="category_name">
                 <a href="#">虚拟商品/服务</a>
               </div>
@@ -231,7 +256,7 @@
           </div>
         </div>
         <div class="hotPoster_items">
-          <img src="../assets/images/hotPoster_03.jpg" alt />
+          <img src="../assets/images/hotPoster_01.jpg" alt />
           <div class="hotPoster_items_textbox">
             <a href="#" class="hotPoster_items_text">
               旅行社/文艺清新/民宿介
@@ -726,7 +751,7 @@
             <el-row :gutter="10">
               <el-col :xs="8" :sm="8" :md="7" :lg="6" :xl="6">
                 <div class="footer_logo">
-                  <img src="../assets/images/footer_01.jpg" alt />
+                  <img src="../assets/images/footer_01.png" alt />
                 </div>
               </el-col>
               <el-col :xs="8" :sm="8" :md="10" :lg="12" :xl="12">
@@ -762,19 +787,15 @@
                       <a href="javascript:;">QQ： 1647685232</a>
                     </dd>
                     <dd>
-                      <a href="javascript:;">电话： 0731-82290973</a>
+                      <a href="javascript:;">电话：0731-82290973</a>
                     </dd>
                   </dl>
                 </div>
               </el-col>
               <el-col :xs="8" :sm="8" :md="7" :lg="6" :xl="6">
                 <div class="footer_contact">
-                  <a href="javascript:;">
-                    <img src="../assets/images/footer_02.jpg" alt />
-                  </a>
-                  <a href="javascript:;">
-                    <img src="../assets/images/footer_03.jpg" alt />
-                  </a>
+                  <a href="javascript:;" class="phoneIcon"></a>
+                  <a href="javascript:;" class="weixinIcon"></a>
                 </div>
               </el-col>
             </el-row>
@@ -791,7 +812,33 @@
 </template>
 
 <script>
-export default {};
+import "../../node_modules/swiper/dist/css/swiper.css";
+import { swiper, swiperSlide } from "vue-awesome-swiper";
+export default {
+  components: {
+    swiper,
+    swiperSlide
+  },
+  data() {
+    return {
+      swiperOption: {
+        slidesPerView: 4,
+        spaceBetween: 30,
+        slidesPerGroup: 4,
+        loop: true,
+        loopFillGroupWithBlank: true,
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev"
+        }
+      }
+    };
+  }
+};
 </script>
 
 <style lang="less" scoped>
@@ -806,6 +853,15 @@ export default {};
   background-color: #e48bb5;
   padding: 13px 35px;
   z-index: 999;
+  .logoBoxa {
+    display: block;
+    width: 136px;
+    height: 36px;
+    img {
+      width: 136px;
+      height: 36px;
+    }
+  }
 }
 .index_container_tab ul {
   overflow: hidden;
@@ -865,6 +921,10 @@ export default {};
   border: none;
   padding-left: 43px;
   font-size: 14px;
+  color: #000;
+}
+.nav_box_ipt::placeholder {
+  font-size: 14px;
   color: #afafaf;
 }
 .navinput_icon {
@@ -874,7 +934,9 @@ export default {};
   top: 0;
   width: 13%;
   height: 50px;
+  line-height: 50px;
   border-radius: 0 25px 25px 0;
+  font-size: 28px;
   background: linear-gradient(
     90deg,
     rgba(255, 117, 140, 1),
@@ -905,33 +967,26 @@ export default {};
   width: 100%;
   height: 175px;
   margin: 30px auto;
-  .el-carousel__item h3 {
-    font-size: 14px;
-    opacity: 0.75;
-    line-height: 175px;
-    margin: 0;
-    text-align: center;
-    padding: 0 50px;
+  // .el-carousel__item:nth-child(2) {
+  //   background: url(../assets/images/slideshow_03.jpg) no-repeat top center;
+  //   background-size: contain;
+  // }
+  .swiper-container {
+    height: 100%;
   }
-  .el-carousel__item:nth-child(2) {
-    background: url(../assets/images/slideshow_03.jpg) no-repeat top center;
-    background-size: contain;
+  .swiper-slide {
+    background-color: darkturquoise;
+    border-radius: 6px;
   }
-  .el-carousel__item:nth-child(3) {
-    background: url(../assets/images/slideshow_01.jpg) no-repeat top center;
-    background-size: contain;
-  }
-  .el-carousel__item:nth-child(4) {
-    background: url(../assets/images/slideshow_02.jpg) no-repeat top center;
-    background-size: contain;
-  }
-  .el-carousel__item:nth-child(5) {
-    background: url(../assets/images/slideshow_03.jpg) no-repeat top center;
-    background-size: contain;
-  }
-  .el-carousel__item:nth-child(6) {
-    background: url(../assets/images/slideshow_01.jpg) no-repeat top center;
-    background-size: contain;
+  .swiper-button-prev,
+  .swiper-button-next {
+    top: 43%;
+    width: 38px;
+    height: 70px;
+    line-height: 70px;
+    border-radius: 6px;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
   }
 }
 // index_nav end
@@ -954,10 +1009,48 @@ export default {};
 }
 .category_icons {
   float: left;
-  width: 43px;
-  height: 43px;
+  width: 44px;
+  height: 44px;
   margin-left: 10px;
   background-color: #a87;
+}
+.category_icons1 {
+  background: url(../assets/images/icons.png) -6px 0 no-repeat;
+}
+.category_icons2 {
+  background: url(../assets/images/icons.png) -84px 0 no-repeat;
+}
+.category_icons3 {
+  background: url(../assets/images/icons.png) -159px 0 no-repeat;
+}
+.category_icons4 {
+  background: url(../assets/images/icons.png) -236px 0 no-repeat;
+}
+.category_icons5 {
+  background: url(../assets/images/icons.png) -312px 0 no-repeat;
+}
+.category_icons6 {
+  background: url(../assets/images/icons.png) -388px 0 no-repeat;
+}
+.category_icons7 {
+  background: url(../assets/images/icons.png) -464px 0 no-repeat;
+}
+.category_icons8 {
+  background: url(../assets/images/icons.png) -542px 0 no-repeat;
+}
+.category_icons9 {
+  background: url(../assets/images/icons.png) -618px 0 no-repeat;
+}
+.category_icons10 {
+  background: url(../assets/images/icons.png) -695px 0 no-repeat;
+}
+.category_icons11 {
+  width: 44px;
+  height: 44px;
+  background: url(../assets/images/icons.png) -771px 0 no-repeat;
+}
+.category_icons12 {
+  background: url(../assets/images/icons.png) -848px 0 no-repeat;
 }
 .category_name {
   float: left;
@@ -1069,7 +1162,10 @@ export default {};
   height: 45px;
   line-height: 45px;
   text-align: right;
-  padding-right: 10px;
+  border: 1px solid rgba(229, 229, 229, 1);
+  border-radius: 22px;
+  background-color: #f4f4f4;
+  text-align: center;
   a {
     color: #333;
     font-size: 14px;
@@ -1193,12 +1289,19 @@ export default {};
 .footer_logo {
   width: 200px;
   height: 50px;
+  img {
+    width: 200px;
+    height: 50px;
+  }
 }
 
 .footer_infos {
   float: left;
   width: 33.33%;
   text-align: left;
+  dt {
+    color: #fff;
+  }
   dd {
     margin-top: 10px;
     color: #fff;
@@ -1211,7 +1314,17 @@ export default {};
 .footer_contact {
   float: right;
   a {
-    margin-left: 60px;
+    float: left;
+    width: 32px;
+    height: 28px;
+    display: block;
+  }
+  .phoneIcon {
+    background: url(../assets/images/icons.png) -244px -84px no-repeat;
+  }
+  .weixinIcon {
+    margin-left: 40px;
+    background: url(../assets/images/icons.png) -198px -83px no-repeat;
   }
 }
 

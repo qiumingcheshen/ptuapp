@@ -2,7 +2,7 @@
   <div class="asideTem">
     <div class="searchBox">
       <input type="text" placeholder="搜索模板" />
-      <i></i>
+      <i class="el-icon-search"></i>
     </div>
     <div class="temContent">
       <ul>
@@ -84,7 +84,9 @@ export default {};
     top: 13px;
     width: 24px;
     height: 24px;
-    background-color: #e70;
+    font-size: 24px;
+    color: #ff5b9e;
+    cursor: pointer;
   }
 }
 .temContent {

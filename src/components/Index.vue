@@ -16,7 +16,7 @@
         <div class="grid-content bg-purple-light index_container_tab">
           <ul>
             <li>
-              <router-link to="/index">首页</router-link>
+              <a href="javascript:;">首页</a>
             </li>
             <li>
               <router-link to="/postem">海报模板</router-link>
@@ -29,10 +29,9 @@
       </el-col>
       <el-col :xs="12" :sm="5" :md="5" :lg="4" :xl="4">
         <div class="index_header_login">
-          <router-link to="/login">登录</router-link>
+          <a href="javascript:;" @click="showLoginDialog()">登录</a>
           <span>|</span>
-          <router-link to="/register">注册</router-link>
-          <router-view></router-view>
+          <a href="javascript:;" @click="showRegisterDialog()">注册</a>
         </div>
       </el-col>
     </el-row>
@@ -808,12 +807,46 @@
     </el-row>
 
     <!-- footer end -->
+
+    <!-- 登录对话框 -->
+    <el-dialog
+      title="登录"
+      :visible.sync="loginDialogVisible"
+      width="400px"
+      :close-on-click-modal="false"
+      :close-on-press-escape="false"
+    >
+      <login @openResterDialog="openResterDialog"></login>
+    </el-dialog>
+
+    <!-- 注册对话框 -->
+    <el-dialog
+      title="注册"
+      :visible.sync="registerDialogVisible"
+      width="400px"
+      :close-on-click-modal="false"
+      :close-on-press-escape="false"
+    >
+      <register @openLoginDialog="openLoginDialog"></register>
+    </el-dialog>
+
+    <!-- 回到顶部 -->
+    <el-tooltip placement="top" content="回到顶部">
+      <back-to-top
+        :custom-style="myBackToTopStyle"
+        :visibility-height="300"
+        :back-position="0"
+        transition-name="fade"
+      />
+    </el-tooltip>
   </div>
 </template>
 
 <script>
+// 引入 swiper css 和  注册 swiper 组件
 import "../../node_modules/swiper/dist/css/swiper.css";
 import { swiper, swiperSlide } from "vue-awesome-swiper";
+
 export default {
   components: {
     swiper,
@@ -821,6 +854,12 @@ export default {
   },
   data() {
     return {
+      // 控制登录对话框的显示隐藏
+      loginDialogVisible: false,
+
+      // 控制注册对话框的显示隐藏
+      registerDialogVisible: false,
+
       swiperOption: {
         slidesPerView: 4,
         spaceBetween: 30,
@@ -835,8 +874,37 @@ export default {
           nextEl: ".swiper-button-next",
           prevEl: ".swiper-button-prev"
         }
+      },
+      // 回到顶部的样式
+      myBackToTopStyle: {
+        right: "50px",
+        bottom: "50px",
+        width: "40px",
+        height: "40px",
+        borderRadius: "4px",
+        lineHeight: "45px", // 请保持与高度一致以垂直居中
+        background: "#e7eaf1" // 按钮的背景颜色
       }
     };
+  },
+  methods: {
+    // 展示登录对话框
+    showLoginDialog() {
+      this.loginDialogVisible = true;
+    },
+    // 展示注册对话框
+    showRegisterDialog() {
+      this.registerDialogVisible = true;
+    },
+    // 接收 登录页、注册页中传回的参数 控制登录页和注册页的显示隐藏
+    openResterDialog(switchObj) {
+      this.registerDialogVisible = switchObj.registerDialogVisible;
+      this.loginDialogVisible = switchObj.loginDialogVisible;
+    },
+    openLoginDialog(switchObj) {
+      this.registerDialogVisible = switchObj.registerDialogVisible;
+      this.loginDialogVisible = switchObj.loginDialogVisible;
+    }
   }
 };
 </script>
@@ -1012,7 +1080,6 @@ export default {
   width: 44px;
   height: 44px;
   margin-left: 10px;
-  background-color: #a87;
 }
 .category_icons1 {
   background: url(../assets/images/icons.png) -6px 0 no-repeat;

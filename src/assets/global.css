@@ -196,3 +196,50 @@ body {
     border: none;
     border-radius: 4px;
 }
+
+
+/* 登录页 , 注册页 css */
+
+.el-dialog .el-dialog__header {
+    padding: 30px;
+    height: 128px;
+    text-align: center;
+    border-radius: 6px 6px 0 0;
+}
+
+.el-dialog__title {
+    font-size: 30px;
+    color: #333;
+    font-weight: 700;
+    line-height: 68px;
+}
+
+.el-dialog__headerbtn .el-dialog__close {
+    font-size: 30px;
+    color: #afafaf;
+}
+
+.el-dialog__body {
+    padding: 0 30px;
+    border-radius: 0 0 6px 6px;
+}
+
+.inputCode .el-input__inner {
+    height: 44px;
+}
+
+.register_password .el-input__inner {
+    height: 44px;
+}
+
+.login_input_password .el-input-group__prepend {
+    padding-right: 24px;
+}
+
+
+/* 聚焦在输入框时边框颜色 */
+
+.el-input.is-active .el-input__inner,
+.el-input__inner:focus {
+    border-color: #ff6a94;
+}

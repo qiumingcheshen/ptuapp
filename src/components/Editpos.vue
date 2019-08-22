@@ -27,43 +27,19 @@
         <!-- 侧边栏区域 -->
         <div class="editContentAside">
           <ul>
-            <!-- <li v-for="(item, index) in asideTabs" :key="index" @click="flag = !flag">
-              <router-link :to="item.address">
-                <i :style="item.asideBackGround"></i>
-                <p>{{item.asidename}}</p>
-              </router-link>
-            </li>-->
-
-            <li @click="flag = !flag">
-              <router-link to="/asideTem" class="asideTem">
-                <i></i>
-                <p>模板</p>
-              </router-link>
-            </li>
-            <li @click="flag = !flag">
-              <router-link to="/asideUpload" class="asideUpload">
-                <i></i>
-                <p>上传</p>
-              </router-link>
-            </li>
-            <li @click="flag = !flag">
-              <router-link to="/asideCollect" class="asideCollect">
-                <i></i>
-                <p>我的收藏</p>
-              </router-link>
-            </li>
-            <li @click="flag = !flag">
-              <router-link to="/asidePoster" class="asidePoster">
-                <i></i>
-                <p>我的海报</p>
-              </router-link>
+            <li v-for="(item, index) in asideTabs" :key="index" @click="switchUnfoldArea(index)">
+              <a href="javascript:;">
+                <i :style="item.backgroundPosition"></i>
+                <p>{{item.title}}</p>
+              </a>
             </li>
           </ul>
         </div>
 
         <!-- 侧边栏展开区域 -->
         <div class="asideUnfold" :style="mainstyle">
-          <router-view></router-view>
+          <!-- 动态切换要显示的组件 -->
+          <Postemplate :is="currentComp"></Postemplate>
         </div>
 
         <!-- 中间的海报区域 -->
@@ -188,11 +164,52 @@
 </template>
 
 <script>
+import Postemplate from "./asideUnfoldArea/AsideTem.vue";
+import Myupload from "./asideUnfoldArea/AsideUpload.vue";
+import Mycollect from "./asideUnfoldArea/AsideCollect.vue";
+import Myposter from "./asideUnfoldArea/AsidePoster.vue";
+import data from "../../public/mock/home.json";
+// console.log(data);
+
 export default {
+  // 注册侧边栏的局部组件
+  components: {
+    Postemplate,
+    Myupload,
+    Mycollect,
+    Myposter
+  },
   data() {
     return {
       // 控制展开栏的显示与隐藏
-      flag: false,
+      flag: true,
+
+      // 当前选中的组件
+      currentComp: "Postemplate",
+
+      // 侧边栏的数据
+      asideTabs: [
+        {
+          backgroundPosition: "background-position: -185px -363px",
+          title: "模板",
+          upfoldTemComp: "Postemplate"
+        },
+        {
+          backgroundPosition: "background-position: -243px -363px",
+          title: "上传",
+          upfoldTemComp: "Myupload"
+        },
+        {
+          backgroundPosition: "background-position: -69px -363px",
+          title: "我的收藏",
+          upfoldTemComp: "Mycollect"
+        },
+        {
+          backgroundPosition: "background-position: -128px -363px",
+          title: "我的海报",
+          upfoldTemComp: "Myposter"
+        }
+      ],
 
       // 字体类型
       FontType: [
@@ -394,16 +411,31 @@ export default {
       IntervalValue: ""
     };
   },
+
+  methods: {
+    // 展示 侧边栏tab 的组件的函数
+    switchUnfoldArea: function(id) {
+      this.flag = !this.flag;
+      this.currentComp = this.asideTabs[id].upfoldTemComp;
+    },
+    agetinfo() {
+      this.$http.get("http://localhost:8081/mock/home.json").then(response => {
+        console.log(response);
+      });
+    }
+  },
   computed: {
     // 侧边栏展开盒子的左定位
     mainstyle: function() {
       return {
-        left: this.flag ? "100px" : "-230px",
+        left: this.flag ? "100px" : "100px",
         opacity: 1
       };
     }
   },
-  methods: {}
+  mounted() {
+    this.agetinfo();
+  }
 };
 </script>
 
@@ -524,18 +556,6 @@ export default {
       color: #666;
       text-align: center;
     }
-  }
-  .asideTem i {
-    background-position: -185px -363px;
-  }
-  .asideUpload i {
-    background-position: -243px -363px;
-  }
-  .asideCollect i {
-    background-position: -69px -363px;
-  }
-  .asidePoster i {
-    background-position: -128px -363px;
   }
 }
 // 侧边栏展开区域

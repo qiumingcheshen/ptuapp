@@ -5,7 +5,11 @@
     <el-row :gutter="10" class="index_container_header">
       <el-col :xs="12" :sm="5" :md="5" :lg="4" :xl="4">
         <div class="grid-content bg-purple">
-          <img src="../assets/images/logo2.png" alt />
+          <h1>
+            <router-link to="/index">
+              <img src="../assets/images/logo2.png" alt />
+            </router-link>
+          </h1>
         </div>
       </el-col>
       <el-col :sm="14" :md="14" :lg="16" :xl="16" class="hidden-xs-only">
@@ -25,11 +29,9 @@
       </el-col>
       <el-col :xs="12" :sm="5" :md="5" :lg="4" :xl="4">
         <div class="index_header_login">
-          <router-link to="/login">登录</router-link>
-          <router-view></router-view>
+          <a href="javascript:;" @click="showLoginDialog()">登录</a>
           <span>|</span>
-          <router-link to="/register">注册</router-link>
-          <router-view></router-view>
+          <a href="javascript:;" @click="showRegisterDialog()">注册</a>
         </div>
       </el-col>
     </el-row>
@@ -167,8 +169,8 @@
     <!-- template category  end  -->
 
     <!-- posterItem start -->
-    <div class="w posterItemBox">
-      <ul>
+    <div class="w posterItemBox clearfix">
+      <!-- <ul>
         <li>
           <a href="javascript:;">
             <img src="../assets/images/posterTem_01.jpg" alt />
@@ -289,7 +291,8 @@
             <img src="../assets/images/posterTem_01.jpg" alt />
           </a>
         </li>
-      </ul>
+      </ul>-->
+      <vue-waterfall-easy :imgsArr="imgsArr"></vue-waterfall-easy>
     </div>
     <!-- posterItem end -->
 
@@ -376,23 +379,96 @@
     </el-row>
 
     <!-- footer end -->
+
+    <!-- 登录对话框 -->
+    <el-dialog
+      title="登录"
+      :visible.sync="loginDialogVisible"
+      width="400px"
+      :close-on-click-modal="false"
+      :close-on-press-escape="false"
+    >
+      <login @openResterDialog="openResterDialog"></login>
+    </el-dialog>
+
+    <!-- 注册对话框 -->
+    <el-dialog
+      title="注册"
+      :visible.sync="registerDialogVisible"
+      width="400px"
+      :close-on-click-modal="false"
+      :close-on-press-escape="false"
+    >
+      <register @openLoginDialog="openLoginDialog"></register>
+    </el-dialog>
+
+    <!-- 回到顶部 -->
+    <el-tooltip placement="top" content="回到顶部">
+      <back-to-top
+        :custom-style="myBackToTopStyle"
+        :visibility-height="300"
+        :back-position="0"
+        transition-name="fade"
+      />
+    </el-tooltip>
   </div>
 </template>
 
 <script>
+import vueWaterfallEasy from "vue-waterfall-easy";
 export default {
-  methods: {
-    handleCurrentChange(val) {
-      console.log(`当前页: ${val}`);
-    }
+  components: {
+    vueWaterfallEasy
   },
   data() {
     return {
+      imgsArr: [],
+      // 控制登录对话框的显示隐藏
+      loginDialogVisible: false,
+
+      // 控制注册对话框的显示隐藏
+      registerDialogVisible: false,
+
+      // 回到顶部的样式
+      myBackToTopStyle: {
+        right: "50px",
+        bottom: "50px",
+        width: "40px",
+        height: "40px",
+        borderRadius: "4px",
+        lineHeight: "45px", // 请保持与高度一致以垂直居中
+        background: "#e7eaf1" // 按钮的背景颜色
+      },
+      // 分页区域
       currentPage1: 5,
       currentPage2: 5,
       currentPage3: 5,
       currentPage4: 4
     };
+  },
+  methods: {
+    // 分页区域处理当前页的函数
+    handleCurrentChange(val) {
+      console.log(`当前页: ${val}`);
+    },
+    // 展示登录对话框
+    showLoginDialog() {
+      this.loginDialogVisible = true;
+    },
+
+    // 展示注册对话框
+    showRegisterDialog() {
+      this.registerDialogVisible = true;
+    },
+    // 接收 登录页、注册页中传回的参数 控制登录页和注册页的显示隐藏
+    openResterDialog(switchObj) {
+      this.registerDialogVisible = switchObj.registerDialogVisible;
+      this.loginDialogVisible = switchObj.loginDialogVisible;
+    },
+    openLoginDialog(switchObj) {
+      this.registerDialogVisible = switchObj.registerDialogVisible;
+      this.loginDialogVisible = switchObj.loginDialogVisible;
+    }
   }
 };
 </script>
@@ -607,7 +683,7 @@ el-breadcrumb-item {
 
 // posterItem start
 .posterItemBox {
-  // height: 3500px;
+  min-height: 500px;
   margin-top: 60px;
   ul {
     overflow: hidden;

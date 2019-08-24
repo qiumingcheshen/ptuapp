@@ -8,21 +8,14 @@ import './assets/global.css'
 // 基于断点的隐藏类
 import 'element-ui/lib/theme-chalk/display.css';
 
-// 导入注册的自定义组件 login
-import login from './components/login/loginComp.js'
-// 导入注册的自定义组件 register
-import register from './components/register/registerComp.js'
-// 导入注册的自定义组件 slide
-import slide from './components/register/slideComp.js'
-// 回到顶部组件
-import BackToTop from './components/backTop/backtotopComp.js'
+// 自动化全局注册
+import "./components/index"
+
 
 import axios from 'axios'
 
-Vue.use(login)
-Vue.use(register)
-Vue.use(slide)
-Vue.use(BackToTop)
+
+
 Vue.prototype.$http = axios;
 
 Vue.config.productionTip = false

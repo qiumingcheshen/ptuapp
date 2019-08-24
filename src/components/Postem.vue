@@ -170,6 +170,15 @@
 
     <!-- posterItem start -->
     <div class="w posterItemBox clearfix">
+      <vue-waterfall-easy :imgsArr="imgsArr">
+        <ul>
+          <li v-for="(item,index) in imgsArr" :key="index">
+            <a href="javascript:;">
+              <img src="item.thumbs" alt />
+            </a>
+          </li>
+        </ul>
+      </vue-waterfall-easy>
       <!-- <ul>
         <li>
           <a href="javascript:;">
@@ -292,7 +301,6 @@
           </a>
         </li>
       </ul>-->
-      <vue-waterfall-easy :imgsArr="imgsArr"></vue-waterfall-easy>
     </div>
     <!-- posterItem end -->
 
@@ -422,12 +430,26 @@ export default {
   },
   data() {
     return {
-      imgsArr: [],
       // 控制登录对话框的显示隐藏
       loginDialogVisible: false,
 
       // 控制注册对话框的显示隐藏
       registerDialogVisible: false,
+
+      // 瀑布流参数
+      // 存放渲染瀑布流的数据
+      imgsArr: [],
+      // 请求参数
+      group: 0,
+      width: 279,
+      srcKey: "thumbs",
+      hrefKey: "varcoverpic.rect",
+
+      // 分页区域
+      currentPage1: 5,
+      currentPage2: 5,
+      currentPage3: 5,
+      currentPage4: 4,
 
       // 回到顶部的样式
       myBackToTopStyle: {
@@ -438,12 +460,7 @@ export default {
         borderRadius: "4px",
         lineHeight: "45px", // 请保持与高度一致以垂直居中
         background: "#e7eaf1" // 按钮的背景颜色
-      },
-      // 分页区域
-      currentPage1: 5,
-      currentPage2: 5,
-      currentPage3: 5,
-      currentPage4: 4
+      }
     };
   },
   methods: {
@@ -468,7 +485,21 @@ export default {
     openLoginDialog(switchObj) {
       this.registerDialogVisible = switchObj.registerDialogVisible;
       this.loginDialogVisible = switchObj.loginDialogVisible;
+    },
+    // 瀑布流请求数据
+    getWaterfallData() {
+      this.$http
+        .get("http://localhost:8081/mock/home.json?group=" + this.group)
+        .then(res => {
+          console.log(res.data.data.canvases);
+
+          this.imgsArr = this.imgsArr.concat(res.data.data.canvases);
+          this.group++;
+        });
     }
+  },
+  created() {
+    this.getWaterfallData();
   }
 };
 </script>

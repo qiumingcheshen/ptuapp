@@ -20,6 +20,7 @@ export default new Router({
         },
         {
             path: '/editpos',
+            name: 'Editpos',
             component: Editpos,
         },
 

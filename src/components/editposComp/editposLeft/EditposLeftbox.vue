@@ -66,7 +66,7 @@ export default {
     // 侧边栏展开盒子的左定位
     mainstyle: function() {
       return {
-        left: this.flag ? "100px" : "-230px",
+        left: this.flag ? "100px" : "100px",
         opacity: 1
       };
     }

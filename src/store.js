@@ -1,14 +1,13 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import editState from './store/editState'
 
 Vue.use(Vuex)
 
-export default new Vuex.Store({
-    state: {},
-    mutations: {
+const modules = { editState }
 
-    },
-    actions: {
-
-    }
+const store = new Vuex.Store({
+    modules
 })
+
+export default store

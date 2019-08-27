@@ -170,137 +170,15 @@
 
     <!-- posterItem start -->
     <div class="w posterItemBox clearfix">
-      <vue-waterfall-easy :imgsArr="imgsArr">
-        <ul>
-          <li v-for="(item,index) in imgsArr" :key="index">
-            <a href="javascript:;">
-              <img src="item.thumbs" alt />
-            </a>
-          </li>
-        </ul>
-      </vue-waterfall-easy>
-      <!-- <ul>
-        <li>
-          <a href="javascript:;">
-            <img src="../assets/images/posterTem_01.jpg" alt />
-          </a>
-        </li>
-        <li>
-          <a href="javascript:;">
-            <img src="../assets/images/posterTem_01.jpg" alt />
-          </a>
-        </li>
-        <li>
-          <a href="javascript:;">
-            <img src="../assets/images/posterTem_01.jpg" alt />
-          </a>
-        </li>
-        <li>
-          <a href="javascript:;">
-            <img src="../assets/images/posterTem_01.jpg" alt />
-          </a>
-        </li>
-        <li>
-          <a href="javascript:;">
-            <img src="../assets/images/posterTem_01.jpg" alt />
-          </a>
-        </li>
-        <li>
-          <a href="javascript:;">
-            <img src="../assets/images/posterTem_01.jpg" alt />
-          </a>
-        </li>
-        <li>
-          <a href="javascript:;">
-            <img src="../assets/images/posterTem_01.jpg" alt />
-          </a>
-        </li>
-        <li>
-          <a href="javascript:;">
-            <img src="../assets/images/posterTem_01.jpg" alt />
-          </a>
-        </li>
-        <li>
-          <a href="javascript:;">
-            <img src="../assets/images/posterTem_01.jpg" alt />
-          </a>
-        </li>
-        <li>
-          <a href="javascript:;">
-            <img src="../assets/images/posterTem_01.jpg" alt />
-          </a>
-        </li>
-        <li>
-          <a href="javascript:;">
-            <img src="../assets/images/posterTem_01.jpg" alt />
-          </a>
-        </li>
-        <li>
-          <a href="javascript:;">
-            <img src="../assets/images/posterTem_01.jpg" alt />
-          </a>
-        </li>
-        <li>
-          <a href="javascript:;">
-            <img src="../assets/images/posterTem_01.jpg" alt />
-          </a>
-        </li>
-        <li>
-          <a href="javascript:;">
-            <img src="../assets/images/posterTem_01.jpg" alt />
-          </a>
-        </li>
-        <li>
-          <a href="javascript:;">
-            <img src="../assets/images/posterTem_01.jpg" alt />
-          </a>
-        </li>
-        <li>
-          <a href="javascript:;">
-            <img src="../assets/images/posterTem_01.jpg" alt />
-          </a>
-        </li>
-        <li>
-          <a href="javascript:;">
-            <img src="../assets/images/posterTem_01.jpg" alt />
-          </a>
-        </li>
-        <li>
-          <a href="javascript:;">
-            <img src="../assets/images/posterTem_01.jpg" alt />
-          </a>
-        </li>
-        <li>
-          <a href="javascript:;">
-            <img src="../assets/images/posterTem_01.jpg" alt />
-          </a>
-        </li>
-        <li>
-          <a href="javascript:;">
-            <img src="../assets/images/posterTem_01.jpg" alt />
-          </a>
-        </li>
-        <li>
-          <a href="javascript:;">
-            <img src="../assets/images/posterTem_01.jpg" alt />
-          </a>
-        </li>
-        <li>
-          <a href="javascript:;">
-            <img src="../assets/images/posterTem_01.jpg" alt />
-          </a>
-        </li>
-        <li>
-          <a href="javascript:;">
-            <img src="../assets/images/posterTem_01.jpg" alt />
-          </a>
-        </li>
-        <li>
-          <a href="javascript:;">
-            <img src="../assets/images/posterTem_01.jpg" alt />
-          </a>
-        </li>
-      </ul>-->
+      <!-- 瀑布流 -->
+      <vue-waterfall-easy
+        :imgsArr="recommendImgList"
+        :maxCols="4"
+        :width="1200"
+        :height="4000"
+        :imgWidth="239"
+        @click="toEditpos"
+      ></vue-waterfall-easy>
     </div>
     <!-- posterItem end -->
 
@@ -430,6 +308,128 @@ export default {
   },
   data() {
     return {
+      recommendImgList: [
+        {
+          id: 1,
+          src:
+            "http://bearcarimg.codebear.cn/7456f975fccea2d5cce19a82e08912ec3ilFkUx56xsHRcFttsqK2Q!gradual.show",
+          href: "javascript:;"
+        },
+        {
+          id: 2,
+          src:
+            "http://bearcarimg.codebear.cn/be123aa0b72465ee503c7ba5c368863bXC6Yu6FwQMPiYF1yk3F2q!gradual.show",
+          href: "javascript:;"
+        },
+        {
+          id: 3,
+          src:
+            "http://bearcarimg.codebear.cn/ce6f9ec8a0d9f077930c15b91b82252b7j9z2sowAjxQQjNJ7eMJwO!gradual.show",
+          href: "javascript:;"
+        },
+        {
+          id: 4,
+          src:
+            "http://bearcarimg.codebear.cn/e8b71e7857b96c7b0c091b1f7592fea536hoikc99bOmERWGriRQDU!gradual.show",
+          href: "javascript:;"
+        },
+        {
+          id: 5,
+          src:
+            "http://bearcarimg.codebear.cn/5de18d7dd61a4c9b055efdabb9f09c836WgCbYTpXrQq9eWgeTXU1s!gradual.show",
+          href: "javascript:;"
+        },
+        {
+          id: 6,
+          src:
+            "http://bearcarimg.codebear.cn/ca6b942ea3f0d7e0ae7f107fe9779d287EeRHrnU6Gjhz639uv6PMY!gradual.show",
+          href: "javascript:;"
+        },
+        {
+          id: 7,
+          src:
+            "http://bearcarimg.codebear.cn/8ead687106ad6d380394a39bebb8eef86wCsJmaJbG07HGEDU8H7S0!gradual.show",
+          href: "javascript:;"
+        },
+        {
+          id: 8,
+          src:
+            "http://bearcarimg.codebear.cn/02596325952cb88e2e63fe9cf2c952bc1SwWxKfeNvZRulKQLgukpM!gradual.show",
+          href: "javascript:;"
+        },
+        {
+          id: 9,
+          src:
+            "http://bearcarimg.codebear.cn/349f6dc27e66f787d93169cad6da732bH9TbSIQgtiC5PIhraGZ9k!gradual.show",
+          href: "javascript:;"
+        },
+        {
+          id: 10,
+          src:
+            "http://bearcarimg.codebear.cn/a87c39432206952ade30d742da64fceb4D6uzMD5EeaKULYsZq7qVe!gradual.show",
+          href: "javascript:;"
+        },
+        {
+          id: 11,
+          src:
+            "http://bearcarimg.codebear.cn/8bdc77316c2f60c84cd84060c4c345af1Z27Iuz4RudcbNBa0Djehi!gradual.show",
+          href: "javascript:;"
+        },
+        {
+          id: 12,
+          src:
+            "http://bearcarimg.codebear.cn/d74e089543afe11a3945c6cd06130b463skAwou9VRH4DpDcMKfEuo!gradual.show",
+          href: "javascript:;"
+        },
+        {
+          id: 13,
+          src:
+            "http://bearcarimg.codebear.cn/f67d9d38e280544cd9dbd3ee6c520b904MtiiViAgAH7HYywyZdNIG!gradual.show",
+          href: "javascript:;"
+        },
+        {
+          id: 14,
+          src:
+            "http://bearcarimg.codebear.cn/25ffb31f5adf7e837540f8da695bc28aHQuHhBZ93Nw7JAMYFJC4U!gradual.show",
+          href: "javascript:;"
+        },
+        {
+          id: 15,
+          src:
+            "http://bearcarimg.codebear.cn/8a61e2e098c59d13bc28b8a4eb667cce3sSvE6gBueFAqFrduNAxS4!gradual.show",
+          href: "javascript:;"
+        },
+        {
+          id: 16,
+          src:
+            "http://bearcarimg.codebear.cn/95a06eee907b49c1e095211323df40f54dnhpdyuf7WLhl6MZxtaPE!gradual.show",
+          href: "javascript:;"
+        },
+        {
+          id: 17,
+          src:
+            "http://bearcarimg.codebear.cn/e386feed6faea239d4e628ae334343c76TKhqAPxh84mKixcFD2jDg!gradual.show",
+          href: "javascript:;"
+        },
+        {
+          id: 18,
+          src:
+            "http://bearcarimg.codebear.cn/d876071258082127cebb0de42f5270b9rxJbFGS4jObsgrikYBq9c!gradual.show",
+          href: "javascript:;"
+        },
+        {
+          id: 19,
+          src:
+            "http://bearcarimg.codebear.cn/4bba98b9b2d3ebc7c41da23cba70f9eb5ZVz5X4NceKe3ioi54a8tu!gradual.show",
+          href: "javascript:;"
+        },
+        {
+          id: 20,
+          src:
+            "http://bearcarimg.codebear.cn/b159e9d856d5bb82a73d92103674134817Ih6um8QgB3fmMUDdAtT4!gradual.show",
+          href: "javascript:;"
+        }
+      ],
       // 控制登录对话框的显示隐藏
       loginDialogVisible: false,
 
@@ -488,14 +488,21 @@ export default {
     },
     // 瀑布流请求数据
     getWaterfallData() {
-      this.$http
-        .get("http://localhost:8081/mock/home.json?group=" + this.group)
-        .then(res => {
-          console.log(res.data.data.canvases);
+      this.$http.get("http://localhost:8081/mock/home.json").then(res => {
+        this.imgsArr = res.data.data.canvases;
+      });
+    },
 
-          this.imgsArr = this.imgsArr.concat(res.data.data.canvases);
-          this.group++;
-        });
+    // 路由传参给编辑页面
+    toEditpos(event, { index, value }) {
+      // 新窗口打开
+      let { href } = this.$router.resolve({
+        path: "/editpos",
+        query: {
+          id: `${value.id}`
+        }
+      });
+      window.open(href, "_blank");
     }
   },
   created() {
@@ -504,6 +511,31 @@ export default {
 };
 </script>
 
+
+<style>
+/* 瀑布流 css */
+.posterItemBox
+  .vue-waterfall-easy-container
+  .vue-waterfall-easy
+  > .img-box.default-card-animation[data-v-ded6b974] {
+  overflow: hidden;
+  /* width: 279px !important; */
+  border-radius: 6px !important;
+  /* padding: 20px !important; */
+  background-color: #fff;
+  /* margin-bottom: 30px; */
+}
+.posterItemBox
+  .vue-waterfall-easy-container
+  .vue-waterfall-easy
+  .vue-waterfall-easy-container
+  .vue-waterfall-easy-scroll[data-v-ded6b974] {
+  overflow-y: hidden !important;
+}
+.posterItemBox .vue-waterfall-easy {
+  margin-left: -583.5px !important;
+}
+</style>
 <style lang="less" scoped>
 // 版心
 .w {
@@ -739,7 +771,6 @@ el-breadcrumb-item {
     }
   }
 }
-// 瀑布流 css
 
 // pageNum start
 .pageNum {

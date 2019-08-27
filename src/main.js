@@ -11,7 +11,6 @@ import 'element-ui/lib/theme-chalk/display.css';
 // 自动化全局注册
 import "./components/index"
 
-
 import axios from 'axios'
 
 

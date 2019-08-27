@@ -39,10 +39,8 @@
 </template>
 
 <script>
-export default {
-  methods: {},
-  computed: {}
-};
+// import { log } from "util";
+export default {};
 </script>
 
 <style lang="less" scoped>

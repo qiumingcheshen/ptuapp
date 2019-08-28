@@ -14,12 +14,7 @@
         <slide></slide>
       </div>
       <div class="securityCodeBox">
-        <el-input
-          type="text"
-          v-model="registerForm.verificate"
-          placeholder="请输入验证码"
-          class="inputCode"
-        ></el-input>
+        <el-input v-model="registerForm.verificate" placeholder="请输入验证码" class="inputCode"></el-input>
 
         <el-button class="setCode">发送验证码</el-button>
       </div>

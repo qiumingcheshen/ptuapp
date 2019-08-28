@@ -1,40 +1,33 @@
 <template>
   <div class="index_container">
     <!-- index header start -->
-
-    <el-row :gutter="10" class="index_container_header">
-      <el-col :xs="12" :sm="5" :md="5" :lg="4" :xl="4">
-        <div class="grid-content bg-purple">
-          <h1>
-            <a href="/index" class="logoBoxa">
-              <img src="../assets/images/logo.png" alt="拼图工厂" title="拼图工厂" />
-            </a>
-          </h1>
-        </div>
-      </el-col>
-      <el-col :sm="14" :md="14" :lg="16" :xl="16" class="hidden-xs-only">
-        <div class="grid-content bg-purple-light index_container_tab">
-          <ul>
-            <li>
-              <a href="javascript:;">首页</a>
-            </li>
-            <li>
-              <router-link to="/postem">海报模板</router-link>
-            </li>
-            <li>
-              <a href="#">客户端下载</a>
-            </li>
-          </ul>
-        </div>
-      </el-col>
-      <el-col :xs="12" :sm="5" :md="5" :lg="4" :xl="4">
-        <div class="index_header_login">
-          <a href="javascript:;" @click="showLoginDialog()">登录</a>
-          <span>|</span>
-          <a href="javascript:;" @click="showRegisterDialog()">注册</a>
-        </div>
-      </el-col>
-    </el-row>
+    <div class="index_container_header">
+      <div class="logoArea">
+        <h1>
+          <a href="/" class="logoBoxa">
+            <img src="../assets/images/logo.png" alt="拼图工厂" title="拼图工厂" />
+          </a>
+        </h1>
+      </div>
+      <div class="index_container_tab">
+        <ul>
+          <li>
+            <a href="javascript:;">首页</a>
+          </li>
+          <li>
+            <router-link to="/postem">海报模板</router-link>
+          </li>
+          <li>
+            <a href="#">客户端下载</a>
+          </li>
+        </ul>
+      </div>
+      <div class="index_header_login">
+        <a href="javascript:;" @click="showLoginDialog()">登录</a>
+        <span>|</span>
+        <a href="javascript:;" @click="showRegisterDialog()">注册</a>
+      </div>
+    </div>
 
     <!-- index header end -->
 
@@ -54,7 +47,7 @@
             <el-row>
               <el-col :span="24">
                 <div class="nav_box_iptdad">
-                  <input placeholder="双十一海报" class="nav_box_ipt" />
+                  <input :placeholder="recommendword" class="nav_box_ipt" />
                   <a href="#" class="navinput_icon el-icon-search"></a>
                 </div>
               </el-col>
@@ -64,11 +57,11 @@
               <el-col :span="24">
                 <div class="nav_box_hotsearch">
                   <span>热门搜索 :</span>
-                  <a href="javascript:;">七夕</a>
-                  <a href="javascript:;">立秋</a>
-                  <a href="javascript:;">促销</a>
-                  <a href="javascript:;">母婴亲子</a>
-                  <a href="javascript:;">代购晒产品</a>
+                  <a
+                    href="javascript:;"
+                    v-for="(item, index) in hotkeyword"
+                    :key="index"
+                  >{{item.keyword}}</a>
                 </div>
               </el-col>
             </el-row>
@@ -116,7 +109,7 @@
 
     <!-- index nav end -->
 
-    <!-- category start -->
+    <!-- category start  分类-->
     <div class="category">
       <el-row :gutter="10">
         <el-col :xs="24" :sm="24" :md="24" :lg="8" :xl="8">
@@ -208,7 +201,7 @@
 
     <!-- category end -->
 
-    <!-- hotPoster start -->
+    <!-- hotPoster start  热门海报-->
 
     <div class="hotPoster">
       <el-row class="hotPoster_header">
@@ -217,274 +210,214 @@
         </el-col>
         <el-col :span="12">
           <div class="hopPoster_header_right">
-            <a href="#">&lt;</a>
+            <a href="javascript:;" @click="hpPrePage">&lt;</a>
             <span>
-              <a href="javascript:;">1</a>
+              <a href="javascript:;" class="hpCurrentPage" v-text="hpCurrentPage">{{hpTotal}}</a>
               /
-              <a href="javascript:;">2</a>
+              <a href="javascript:;" class="hpTotal" v-text="hpTotal">{{hpTotal}}</a>
             </span>
-            <a href="#">&gt;</a>
+            <a href="javascript:;" @click="hpNextPage">&gt;</a>
           </div>
         </el-col>
       </el-row>
       <div class="hotPoster_content">
-        <div class="hotPoster_items">
-          <img src="../assets/images/hotPoster_01.jpg" alt />
-          <div class="hotPoster_items_textbox">
-            <a href="#" class="hotPoster_items_text">
-              旅行社/文艺清新/民宿介
-              绍/长图海报 点击旅行社/文艺清新/民宿介
-              绍/长图海报 点击旅行社/文艺清新/民宿介
-              绍/长图海报 点击旅行社/文艺清新/民宿介
-              绍/长图海报 点击旅行社/文艺清新/民宿介
-              绍/长图海报 点击
-            </a>
-          </div>
-        </div>
-        <div class="hotPoster_items">
-          <img src="../assets/images/hotPoster_02.jpg" alt />
-          <div class="hotPoster_items_textbox">
-            <a href="#" class="hotPoster_items_text">
-              旅行社/文艺清新/民宿介
-              绍/长图海报 点击旅行社/文艺清新/民宿介
-              绍/长图海报 点击旅行社/文艺清新/民宿介
-              绍/长图海报 点击旅行社/文艺清新/民宿介
-              绍/长图海报 点击旅行社/文艺清新/民宿介
-              绍/长图海报 点击
-            </a>
-          </div>
-        </div>
-        <div class="hotPoster_items">
-          <img src="../assets/images/hotPoster_01.jpg" alt />
-          <div class="hotPoster_items_textbox">
-            <a href="#" class="hotPoster_items_text">
-              旅行社/文艺清新/民宿介
-              绍/长图海报 点击旅行社/文艺清新/民宿介
-              绍/长图海报 点击旅行社/文艺清新/民宿介
-              绍/长图海报 点击旅行社/文艺清新/民宿介
-              绍/长图海报 点击旅行社/文艺清新/民宿介
-              绍/长图海报 点击
-            </a>
-          </div>
-        </div>
-        <div class="hotPoster_items">
-          <img src="../assets/images/hotPoster_04.jpg" alt />
-          <div class="hotPoster_items_textbox">
-            <a href="#" class="hotPoster_items_text">
-              旅行社/文艺清新/民宿介
-              绍/长图海报 点击旅行社/文艺清新/民宿介
-              绍/长图海报 点击旅行社/文艺清新/民宿介
-              绍/长图海报 点击旅行社/文艺清新/民宿介
-              绍/长图海报 点击旅行社/文艺清新/民宿介
-              绍/长图海报 点击
-            </a>
-          </div>
-        </div>
-        <div class="hotPoster_items">
-          <img src="../assets/images/hotPoster_05.jpg" alt />
-          <div class="hotPoster_items_textbox">
-            <a href="#" class="hotPoster_items_text">
-              旅行社/文艺清新/民宿介
-              绍/长图海报 点击旅行社/文艺清新/民宿介
-              绍/长图海报 点击旅行社/文艺清新/民宿介
-              绍/长图海报 点击旅行社/文艺清新/民宿介
-              绍/长图海报 点击旅行社/文艺清新/民宿介
-              绍/长图海报 点击
-            </a>
-          </div>
-        </div>
+        <ul>
+          <li class="hotPoster_items" v-for="(item, index) in hotpostList" :key="index">
+            <img :src="item.thumbs" alt />
+            <div class="hotPoster_items_textbox">
+              <a href="#" class="hotPoster_items_text">
+                旅行社/文艺清新/民宿介
+                绍/长图海报 点击旅行社/文艺清新/民宿介
+                绍/长图海报 点击旅行社/文艺清新/民宿介
+                绍/长图海报 点击旅行社/文艺清新/民宿介
+                绍/长图海报 点击旅行社/文艺清新/民宿介
+                绍/长图海报 点击
+              </a>
+            </div>
+          </li>
+        </ul>
       </div>
     </div>
 
     <!-- hotPoster end -->
 
-    <!-- generalize start -->
+    <!-- groupItems start  推广-->
 
-    <div class="generalize">
-      <div class="generalize_header">
-        <el-row :gutter="10">
-          <el-col :xs="12" :sm="3" :md="2" :lg="2" :xl="2">
-            <div class="grid-content bg-purple generalize_name">推广</div>
-          </el-col>
-          <el-col :sm="18" :md="20" :lg="20" :xl="20" class="hidden-xs-only">
-            <div class="grid-content bg-purple generalize_tab">
-              <ul>
-                <li>
-                  <a href="javascript:;">价格表</a>
-                </li>
-                <li>
-                  <a href="javascript:;">邀请函</a>
-                </li>
-                <li>
-                  <a href="javascript:;">授权书</a>
-                </li>
-                <li>
-                  <a href="javascript:;">招代理</a>
-                </li>
-                <li>
-                  <a href="javascript:;">喜报</a>
-                </li>
-                <li>
-                  <a href="javascript:;">招聘</a>
-                </li>
-                <li>
-                  <a href="javascript:;">发布会</a>
-                </li>
-                <li>
-                  <a href="javascript:;">门槛</a>
-                </li>
-                <li>
-                  <a href="javascript:;">销售</a>
-                </li>
-              </ul>
-            </div>
-          </el-col>
-          <el-col :xs="12" :sm="3" :md="2" :lg="2" :xl="2">
-            <div class="grid-content bg-purple generalize_checkall">
-              <a href="javascript:;">查看全部 &gt;</a>
-            </div>
-          </el-col>
-        </el-row>
-      </div>
-      <div class="generalize_content">
-        <div class="generalize_items">
-          <img src="../assets/images/generalize_01.jpg" alt />
+    <div class="groupItems">
+      <div class="groupItems_header">
+        <div class="groupItems_name">推广</div>
+
+        <div class="groupItems_tab">
+          <ul>
+            <li
+              v-for="(item, index) in generalize"
+              :key="index"
+              :class="{active:generalizeNum == index}"
+              @mouseover="generalizeTab(index)"
+            >
+              <a href="javascript:;">{{item.labelname}}</a>
+            </li>
+          </ul>
         </div>
-        <div class="generalize_items">
-          <img src="../assets/images/generalize_01.jpg" alt />
-        </div>
-        <div class="generalize_items">
-          <img src="../assets/images/generalize_01.jpg" alt />
-        </div>
-        <div class="generalize_items">
-          <img src="../assets/images/generalize_01.jpg" alt />
+
+        <div class="groupItems_checkall">
+          <a href="javascript:;">
+            查看全部
+            <i></i>
+          </a>
         </div>
       </div>
-      <div class="generalize_content">
-        <div class="generalize_items">
-          <img src="../assets/images/generalize_01.jpg" alt />
-        </div>
-        <div class="generalize_items">
-          <img src="../assets/images/generalize_01.jpg" alt />
-        </div>
-        <div class="generalize_items">
-          <img src="../assets/images/generalize_01.jpg" alt />
-        </div>
-        <div class="generalize_items">
-          <img src="../assets/images/generalize_01.jpg" alt />
-        </div>
+      <div class="groupItems_content">
+        <ul
+          class="clearfix"
+          v-for="(item, index) in generalize"
+          :key="index"
+          v-show="index == generalizeNum"
+        >
+          <li v-for="(item, index) in item.materialList" :key="index">
+            <img :src="item.thumb" alt />
+          </li>
+        </ul>
       </div>
     </div>
 
-    <!-- generalize end -->
+    <!-- groupItems end -->
 
-    <!-- recommend start -->
+    <!-- groupItems start  活动-->
 
-    <el-row>
-      <el-col :span="24">
-        <div class="recommendBox">
-          <div class="recommend">
-            <div class="recommend_title">推荐专题</div>
-            <div class="recommend_content">
-              <div class="recommend_items">
-                <img src="../assets/images/recommend_01.jpg" alt />
-              </div>
-              <div class="recommend_items">
-                <img src="../assets/images/recommend_01.jpg" alt />
-              </div>
-              <div class="recommend_items">
-                <img src="../assets/images/recommend_01.jpg" alt />
-              </div>
-              <div class="recommend_items">
-                <img src="../assets/images/recommend_01.jpg" alt />
-              </div>
-            </div>
-          </div>
+    <div class="groupItems">
+      <div class="groupItems_header">
+        <div class="groupItems_name">活动</div>
+
+        <div class="groupItems_tab">
+          <ul>
+            <li
+              v-for="(item, index) in activity"
+              :key="index"
+              :class="{active:activityNum == index}"
+              @mouseover="activityTab(index)"
+            >
+              <a href="javascript:;">{{item.labelname}}</a>
+            </li>
+          </ul>
         </div>
-      </el-col>
-    </el-row>
 
-    <!-- recommend end -->
+        <div class="groupItems_checkall">
+          <a href="javascript:;">
+            查看全部
+            <i></i>
+          </a>
+        </div>
+      </div>
+      <div class="groupItems_content">
+        <ul
+          class="clearfix"
+          v-for="(item, index) in activity"
+          :key="index"
+          v-show="index == activityNum"
+        >
+          <li v-for="(item, index) in item.materialList" :key="index">
+            <img :src="item.thumb" alt />
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- groupItems end -->
 
     <!-- investment start  招商 -->
 
-    <div class="generalize">
-      <div class="generalize_header">
-        <el-row :gutter="10">
-          <el-col :xs="12" :sm="3" :md="2" :lg="2" :xl="2">
-            <div class="grid-content bg-purple generalize_name">招商</div>
-          </el-col>
-          <el-col :sm="18" :md="20" :lg="20" :xl="20" class="hidden-xs-only">
-            <div class="grid-content bg-purple generalize_tab">
-              <ul>
-                <li>
-                  <a href="javascript:;">价格表</a>
-                </li>
-                <li>
-                  <a href="javascript:;">邀请函</a>
-                </li>
-                <li>
-                  <a href="javascript:;">授权书</a>
-                </li>
-                <li>
-                  <a href="javascript:;">招代理</a>
-                </li>
-                <li>
-                  <a href="javascript:;">喜报</a>
-                </li>
-                <li>
-                  <a href="javascript:;">招聘</a>
-                </li>
-                <li>
-                  <a href="javascript:;">发布会</a>
-                </li>
-                <li>
-                  <a href="javascript:;">门槛</a>
-                </li>
-                <li>
-                  <a href="javascript:;">销售</a>
-                </li>
-              </ul>
-            </div>
-          </el-col>
-          <el-col :xs="12" :sm="3" :md="2" :lg="2" :xl="2">
-            <div class="grid-content bg-purple generalize_checkall">
-              <a href="javascript:;">查看全部 &gt;</a>
-            </div>
-          </el-col>
-        </el-row>
-      </div>
-      <div class="generalize_content">
-        <div class="generalize_items">
-          <img src="../assets/images/generalize_01.jpg" alt />
+    <div class="groupItems">
+      <div class="groupItems_header">
+        <div class="groupItems_name">招商</div>
+
+        <div class="groupItems_tab">
+          <ul>
+            <li
+              v-for="(item, index) in investment"
+              :key="index"
+              :class="{active:investmentNum == index}"
+              @mouseover="investmentTab(index)"
+            >
+              <a href="javascript:;">{{item.labelname}}</a>
+            </li>
+          </ul>
         </div>
-        <div class="generalize_items">
-          <img src="../assets/images/generalize_01.jpg" alt />
-        </div>
-        <div class="generalize_items">
-          <img src="../assets/images/generalize_01.jpg" alt />
-        </div>
-        <div class="generalize_items">
-          <img src="../assets/images/generalize_01.jpg" alt />
+
+        <div class="groupItems_checkall">
+          <a href="javascript:;">
+            查看全部
+            <i></i>
+          </a>
         </div>
       </div>
-      <div class="generalize_content">
-        <div class="generalize_items">
-          <img src="../assets/images/generalize_01.jpg" alt />
-        </div>
-        <div class="generalize_items">
-          <img src="../assets/images/generalize_01.jpg" alt />
-        </div>
-        <div class="generalize_items">
-          <img src="../assets/images/generalize_01.jpg" alt />
-        </div>
-        <div class="generalize_items">
-          <img src="../assets/images/generalize_01.jpg" alt />
-        </div>
+      <div class="groupItems_content">
+        <ul
+          class="clearfix"
+          v-for="(item, index) in investment"
+          :key="index"
+          v-show="index == investmentNum"
+        >
+          <li v-for="(item, index) in item.materialList" :key="index">
+            <img :src="item.thumb" alt />
+          </li>
+        </ul>
       </div>
     </div>
 
     <!-- investment end 招商 -->
+
+    <!-- investment start  团队 -->
+
+    <div class="groupItems">
+      <div class="groupItems_header">
+        <div class="groupItems_name">团队</div>
+
+        <div class="groupItems_tab">
+          <ul>
+            <li
+              v-for="(item, index) in team"
+              :key="index"
+              :class="{active:teamNum == index}"
+              @mouseover="teamTab(index)"
+            >
+              <a href="javascript:;">{{item.labelname}}</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="groupItems_checkall">
+          <a href="javascript:;">
+            查看全部
+            <i></i>
+          </a>
+        </div>
+      </div>
+      <div class="groupItems_content">
+        <ul class="clearfix" v-for="(item, index) in team" :key="index" v-show="index == teamNum">
+          <li v-for="(item, index) in item.materialList" :key="index">
+            <img :src="item.thumb" alt />
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- investment end 团队 -->
+
+    <!-- recommend start  推荐 -->
+
+    <div class="recommendBox">
+      <div class="recommend">
+        <div class="recommend_title">推荐专题</div>
+        <div class="recommend_content">
+          <div class="recommend_items" v-for="(item, index) in recommendgroup1" :key="index">
+            <img :src="item.cimage" alt />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- recommend end -->
 
     <!-- sport start -->
 
@@ -562,111 +495,18 @@
 
     <!-- recommend start -->
 
-    <el-row>
-      <el-col :span="24">
-        <div class="recommendBox">
-          <div class="recommend">
-            <div class="recommend_title">推荐专题</div>
-            <div class="recommend_content">
-              <div class="recommend_items">
-                <img src="../assets/images/recommend_01.jpg" alt />
-              </div>
-              <div class="recommend_items">
-                <img src="../assets/images/recommend_01.jpg" alt />
-              </div>
-              <div class="recommend_items">
-                <img src="../assets/images/recommend_01.jpg" alt />
-              </div>
-              <div class="recommend_items">
-                <img src="../assets/images/recommend_01.jpg" alt />
-              </div>
-            </div>
+    <div class="recommendBox">
+      <div class="recommend">
+        <div class="recommend_title">推荐专题</div>
+        <div class="recommend_content">
+          <div class="recommend_items" v-for="(item, index) in recommendgroup2" :key="index">
+            <img :src="item.cimage" alt />
           </div>
-        </div>
-      </el-col>
-    </el-row>
-
-    <!-- recommend end -->
-
-    <!-- investment start  招商 -->
-
-    <div class="generalize">
-      <div class="generalize_header">
-        <el-row :gutter="10">
-          <el-col :xs="12" :sm="3" :md="2" :lg="2" :xl="2">
-            <div class="grid-content bg-purple generalize_name">招商</div>
-          </el-col>
-          <el-col :sm="18" :md="20" :lg="20" :xl="20" class="hidden-xs-only">
-            <div class="grid-content bg-purple generalize_tab">
-              <ul>
-                <li>
-                  <a href="javascript:;">价格表</a>
-                </li>
-                <li>
-                  <a href="javascript:;">邀请函</a>
-                </li>
-                <li>
-                  <a href="javascript:;">授权书</a>
-                </li>
-                <li>
-                  <a href="javascript:;">招代理</a>
-                </li>
-                <li>
-                  <a href="javascript:;">喜报</a>
-                </li>
-                <li>
-                  <a href="javascript:;">招聘</a>
-                </li>
-                <li>
-                  <a href="javascript:;">发布会</a>
-                </li>
-                <li>
-                  <a href="javascript:;">门槛</a>
-                </li>
-                <li>
-                  <a href="javascript:;">销售</a>
-                </li>
-              </ul>
-            </div>
-          </el-col>
-          <el-col :xs="12" :sm="3" :md="2" :lg="2" :xl="2">
-            <div class="grid-content bg-purple generalize_checkall">
-              <a href="javascript:;">查看全部 &gt;</a>
-            </div>
-          </el-col>
-        </el-row>
-      </div>
-      <div class="generalize_content">
-        <div class="generalize_items">
-          <img src="../assets/images/generalize_01.jpg" alt />
-        </div>
-        <div class="generalize_items">
-          <img src="../assets/images/generalize_01.jpg" alt />
-        </div>
-        <div class="generalize_items">
-          <img src="../assets/images/generalize_01.jpg" alt />
-        </div>
-        <div class="generalize_items">
-          <img src="../assets/images/generalize_01.jpg" alt />
-        </div>
-      </div>
-      <div class="generalize_content">
-        <div class="generalize_items">
-          <img src="../assets/images/generalize_01.jpg" alt />
-        </div>
-        <div class="generalize_items">
-          <img src="../assets/images/generalize_01.jpg" alt />
-        </div>
-        <div class="generalize_items">
-          <img src="../assets/images/generalize_01.jpg" alt />
-        </div>
-        <div class="generalize_items">
-          <img src="../assets/images/generalize_01.jpg" alt />
         </div>
       </div>
     </div>
 
-    <!-- investment end 招商 -->
+    <!-- recommend end -->
 
     <!-- sport start -->
 
@@ -854,6 +694,46 @@ export default {
   },
   data() {
     return {
+      // 热门搜索关键字
+      recommendword: "",
+      // 热门搜索数组
+      hotkeyword: [],
+      // 热门海报数据列表
+      hotpostList: [],
+      // 热门海报总页数
+      hpTotal: 1,
+      // 热门海报当前页
+      hpCurrentPage: 1,
+
+      // 推荐专题数组 1
+      recommendgroup1: [],
+
+      // 推荐专题数组 2
+      recommendgroup2: [],
+
+      //  所有组信息
+      allGroup: [],
+
+      // 推广 tab 栏
+      generalize: [],
+      // 控制 推广 tab栏的 切换
+      generalizeNum: 1,
+
+      // 活动 tab 栏
+      activity: [],
+      // 控制 活动 tab栏的 切换
+      activityNum: 1,
+
+      // 招商 tab 栏
+      investment: [],
+      // 控制 招商 tab栏的 切换
+      investmentNum: 1,
+
+      // 团队 tab 栏
+      team: [],
+      // 控制 团队 tab栏的 切换
+      teamNum: 1,
+
       // 控制登录对话框的显示隐藏
       loginDialogVisible: false,
 
@@ -904,44 +784,155 @@ export default {
     openLoginDialog(switchObj) {
       this.registerDialogVisible = switchObj.registerDialogVisible;
       this.loginDialogVisible = switchObj.loginDialogVisible;
+    },
+
+    // 获取热门搜索关键字
+    async gethbkeysearch() {
+      const { data: res } = await this.$http.post("/api/ad/ad/recommendword");
+      if (res.status !== "1") {
+        return this.$message.error("获取推荐关键字失败！");
+      }
+      this.recommendword = res.data;
+    },
+
+    // 获取热门搜索词组
+    async getHotkeyword() {
+      const { data: res } = await this.$http.post("/api/ad/ad/hotkeyword");
+
+      if (res.status !== "1") {
+        return this.$message.error("获取热门关键词失败！");
+      }
+      this.hotkeyword = res.data;
+    },
+
+    // 获取热门海报的图片
+    async getHotPos() {
+      const { data: res } = await this.$http.get(
+        "http://localhost:8081/mock/home.json"
+      );
+      if (res.status !== "1") {
+        return this.$message.error("获取热门海报图片失败！");
+      }
+      this.hotpostList = res.data.canvases;
+      // 计算海报总页数
+      this.hpTotal = Math.ceil(this.hotpostList.length / 5);
+    },
+    // 处理热门海报的点击翻页事件
+    hpNextPage() {
+      console.log(1);
+    },
+    hpPrePage() {
+      console.log(0);
+    },
+
+    // 获取推荐专题的信息
+    async getRecommendgroup() {
+      const { data: res } = await this.$http.post("/api/ad/ad/recommendhgroup");
+
+      if (res.status !== "1") {
+        return this.$message.error("获取推荐专题信息失败！");
+      }
+
+      for (let i = 0; i < res.data.length; i++) {
+        if (i < 4) {
+          this.recommendgroup1.push(res.data[i]);
+        } else if (i >= 4 && i < 8) {
+          this.recommendgroup2.push(res.data[i]);
+        }
+      }
+    },
+
+    // 获取所有组信息
+    async getGroup() {
+      const { data: res } = await this.$http.post(
+        "/api/ad/ad/groupwithhb?token=111"
+      );
+
+      if (res.status !== "1") {
+        return this.$message.error("获取所有组信息失败！");
+      }
+      console.log(res.data);
+
+      this.generalize = res.data[0].labels;
+      this.activity = res.data[1].labels;
+      this.investment = res.data[2].labels;
+      this.team = res.data[3].labels;
+    },
+
+    // 推广栏的 hover事件
+    generalizeTab(index) {
+      this.generalizeNum = index;
+    },
+    // 活动栏的 hover 事件
+    activityTab(index) {
+      this.activityNum = index;
+    },
+    // 招商栏的 hover 事件
+    investmentTab(index) {
+      this.investmentNum = index;
+    },
+    // 团队栏的 hover 事件
+    teamTab(index) {
+      this.teamNum = index;
     }
+  },
+  created() {
+    this.gethbkeysearch();
+    this.getHotkeyword();
+    this.getHotPos();
+    this.getRecommendgroup();
+    this.getGroup();
   }
 };
 </script>
 
 <style lang="less" scoped>
 // index header start
-
+.index_container {
+  min-width: 1200px;
+}
 .index_container_header {
   position: fixed;
   top: 0;
   right: 0;
   left: 0;
+  min-width: 1200px;
   height: 60px;
-  background-color: #e48bb5;
+  background-color: #e180ac;
   padding: 13px 35px;
   z-index: 999;
-  .logoBoxa {
-    display: block;
-    width: 136px;
+  .logoArea {
+    width: 300px;
     height: 36px;
-    img {
+    float: left;
+    .logoBoxa {
+      display: block;
       width: 136px;
       height: 36px;
+      img {
+        width: 136px;
+        height: 36px;
+      }
     }
   }
 }
-.index_container_tab ul {
-  overflow: hidden;
-  li {
-    float: left;
-    height: 36px;
-    line-height: 36px;
-    margin: 0 20px;
-    font-size: 16px;
+.index_container_tab {
+  float: left;
+  height: 36px;
+  ul {
+    overflow: hidden;
+    li {
+      float: left;
+      height: 36px;
+      line-height: 36px;
+      margin: 0 20px;
+      font-size: 16px;
+    }
   }
 }
 .index_header_login {
+  float: right;
+  width: 300px;
   font-size: 14px;
   height: 36px;
   line-height: 36px;
@@ -957,7 +948,7 @@ export default {
 // index_nav start
 .index_nav {
   height: 500px;
-  background-color: #e48bb5;
+  background-color: #e180ac;
   padding-top: 60px;
   text-align: center;
 }
@@ -988,6 +979,7 @@ export default {
   border-radius: 25px;
   border: none;
   padding-left: 43px;
+  padding-right: 140px;
   font-size: 14px;
   color: #000;
 }
@@ -1164,17 +1156,27 @@ export default {
   color: #000;
 }
 .hotPoster_content {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
+  overflow: hidden;
+  position: relative;
+  width: 1200px;
+  height: 500px;
+  ul {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 3000px;
+    height: 500px;
+  }
   .hotPoster_items {
-    width: 18%;
+    float: left;
+    width: 220px;
     background: rgba(255, 255, 255, 1);
     box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.2);
+    margin-right: 25px;
     border-radius: 6px;
     padding: 10px;
     img {
-      width: 100%;
+      width: 200px;
     }
   }
 }
@@ -1194,24 +1196,28 @@ export default {
 }
 // hotPoster end
 
-// generalize start
-.generalize {
-  max-width: 1200px;
+// groupItems start
+.groupItems {
+  width: 1200px;
   margin: auto;
-  margin-top: 140px;
+  margin-top: 50px;
 }
-.generalize_header {
-  height: 45px;
+.groupItems_header {
+  height: 90px;
 }
-.generalize_name {
+.groupItems_name {
+  float: left;
+  width: 100px;
   font-size: 30px;
   color: #000;
 }
-.generalize_tab {
-  height: 45px;
+.groupItems_tab {
+  float: left;
+  width: 983px;
+  height: 90px;
   ul {
     overflow: hidden;
-    height: 45px;
+    height: 90px;
     line-height: 45px;
     text-align: center;
     li {
@@ -1219,13 +1225,20 @@ export default {
       height: 45px;
       margin-right: 35px;
       a {
+        display: block;
+        height: 45px;
         color: #333;
         font-size: 14px;
       }
     }
+    .active {
+      border-bottom: 3px solid #ff6a94;
+    }
   }
 }
-.generalize_checkall {
+.groupItems_checkall {
+  float: right;
+  width: 117px;
   height: 45px;
   line-height: 45px;
   text-align: right;
@@ -1236,33 +1249,72 @@ export default {
   a {
     color: #333;
     font-size: 14px;
+    i {
+      display: inline-block;
+      width: 9px;
+      height: 14px;
+      vertical-align: -2px;
+      margin-left: 8px;
+      background: url("../assets/images/icons.png") -117px -85px;
+    }
+  }
+  &:hover {
+    background-color: #ff6a94;
   }
 }
-.generalize_content {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  margin-top: 30px;
-}
-.generalize_items {
-  width: 23%;
-  background: rgba(255, 255, 255, 1);
-  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.2);
-  border-radius: 6px;
-  padding: 30px 25px;
-  img {
-    width: 100%;
+.groupItems_content {
+  width: 1200px;
+  margin-top: 10px;
+  // height: 1000px;
+  ul {
+    display: block;
+    width: 1250px;
+    li {
+      float: left;
+      position: relative;
+      width: 279px;
+      background: rgba(255, 255, 255, 1);
+      box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.2);
+      border-radius: 6px;
+      padding: 30px 25px;
+      margin-right: 25px;
+      margin-bottom: 25px;
+      img {
+        display: block;
+        width: 100%;
+      }
+      &:hover:before {
+        opacity: 1;
+      }
+    }
+    :before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      border-radius: 6px;
+      background: rgba(0, 0, 0, 0.15);
+      opacity: 0;
+      transition: opacity 0.2s ease;
+      z-index: 1;
+    }
   }
 }
-// generalize end;
+
+// groupItems end;
 
 // recommend start
 .recommendBox {
   background-color: #1e1b1b;
   margin-top: 140px;
+  width: 100%;
+  height: 480px;
+  margin-bottom: 100px;
 }
 .recommend {
-  max-width: 1200px;
+  width: 1200px;
   margin: 0 auto;
   padding: 70px 0;
 }
@@ -1272,17 +1324,24 @@ export default {
   margin-bottom: 25px;
 }
 .recommend_content {
-  display: flex;
-  justify-content: space-between;
   width: 100%;
   .recommend_items {
-    width: 23%;
+    float: left;
+    width: 274px;
+    height: 274px;
     background-color: #fff;
     border-radius: 10px;
+    margin-right: 34px;
     overflow: hidden;
     img {
       width: 100%;
     }
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  .recommend_items:nth-child(4n) {
+    margin-right: 0;
   }
 }
 // recommend end

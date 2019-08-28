@@ -48,7 +48,7 @@ export default {};
   position: relative;
   display: block;
   max-width: 1880px;
-  min-width: 970px;
+  min-width: 1180px;
   height: 922px;
   margin: auto;
   background-color: #fff;

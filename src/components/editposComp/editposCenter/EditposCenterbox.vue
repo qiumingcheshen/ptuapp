@@ -1,8 +1,9 @@
 <template>
-  <div id="editpos-centerbox">
-    <div class="posAreaImg">
+  <div id="editpos-centerbox" :style="BoxminWidth">
+    <div class="posAreaImg" :style="posImgAreaSty">
       <div class="posImgArea">
-        <img :src="imgArea" alt />
+        <!-- <img :src="imgArea" alt /> -->
+        <edit-image></edit-image>
       </div>
     </div>
   </div>
@@ -17,6 +18,8 @@ export default {
       imgArea: "",
       // 路由传参过来的id
       id: "",
+
+      // 图片数据
       recommendImgList: [
         {
           id: 1,
@@ -142,18 +145,21 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["eimgSrc"])
+    ...mapGetters(["eimgSrc"]),
     // ...mapState(["eimgSrc"])
+    // 盒子的上边距
+    posImgAreaSty() {
+      return `padding-top: 300px`;
+    },
+    // 大盒子的最小宽度
+    BoxminWidth() {
+      return `min-width: `;
+    }
   },
   methods: {
     ...mapActions(["updateimgSrc"]),
-    // 发送请求获取中间海报图片
+    // postem 跳转过来的图片信息
     agetinfo() {
-      // this.$http.get("http://localhost:8081/mock/home.json").then(response => {
-      //   this.imgArea = response.data.data.canvases[0].varcoverpic[0].pic;
-      //   this.id = this.$route.query.id;
-      //   console.log(this.id);
-      // });
       this.id = this.$route.query.id - 1;
 
       this.imgArea = this.recommendImgList[this.id].src;
@@ -161,6 +167,21 @@ export default {
     // 点击左侧 tab 栏的图片，中间对应显示图片
     getsrc() {
       this.imgArea = this.eimgSrc.src;
+    },
+    // 发送请求得到图片信息
+    async getimgInfo() {
+      // this.$http.get("http://localhost:8081/mock/home.json").then(response => {
+      //   let imginfo = response.data.data.canvases[0].varcoverpic[0].rect.split(
+      //     ","
+      //   );
+      //   let a = response.data.data.canvases[0].varcoverpic[0].rect.split(
+      //     ","
+      //   )[0];
+      // });
+      const { data: res } = await this.$http.get(
+        "http://localhost:8081/mock/home.json"
+      );
+      console.log(res);
     }
   },
   watch: {
@@ -171,6 +192,7 @@ export default {
   },
   created() {
     this.agetinfo();
+    this.getimgInfo();
   }
 };
 </script>
@@ -185,21 +207,24 @@ export default {
   bottom: 0;
   right: 0;
   .posImgArea {
-    width: 430px;
-    height: 800px;
-    position: absolute;
-    padding: 40px;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    // box-sizing: content-box;
+    // width: 430px;
+    // height: 80px;
+    position: relative;
     // margin: 0 auto;
+    // text-align: center;
+    // padding: 40px;
+    // left: 50%;
+    // top: 50%;
+    // transform: translate(-50%, -50%);
+    // box-sizing: content-box;
+
     // overflow: visible;
     // position: relative;
-    img {
-      width: 100%;
-      height: 100%;
-    }
+    // img {
+    //   width: 430px;
+    //   height: 700px;
+    //   margin: auto;
+    // }
   }
 }
 </style>

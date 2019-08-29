@@ -1,9 +1,8 @@
 <template>
-  <div id="editpos-centerbox" :style="BoxminWidth">
-    <div class="posAreaImg" :style="posImgAreaSty">
+  <div id="editpos-centerbox">
+    <div class="posAreaImg">
       <div class="posImgArea">
-        <!-- <img :src="imgArea" alt /> -->
-        <edit-image></edit-image>
+        <edit-pos></edit-pos>
       </div>
     </div>
   </div>
@@ -17,182 +16,33 @@ export default {
       // 中间海报区域
       imgArea: "",
       // 路由传参过来的id
-      id: "",
+      id: ""
 
       // 图片数据
-      recommendImgList: [
-        {
-          id: 1,
-          src:
-            "http://bearcarimg.codebear.cn/7456f975fccea2d5cce19a82e08912ec3ilFkUx56xsHRcFttsqK2Q!gradual.show",
-          href: "javascript:;"
-        },
-        {
-          id: 2,
-          src:
-            "http://bearcarimg.codebear.cn/be123aa0b72465ee503c7ba5c368863bXC6Yu6FwQMPiYF1yk3F2q!gradual.show",
-          href: "javascript:;"
-        },
-        {
-          id: 3,
-          src:
-            "http://bearcarimg.codebear.cn/ce6f9ec8a0d9f077930c15b91b82252b7j9z2sowAjxQQjNJ7eMJwO!gradual.show",
-          href: "javascript:;"
-        },
-        {
-          id: 4,
-          src:
-            "http://bearcarimg.codebear.cn/e8b71e7857b96c7b0c091b1f7592fea536hoikc99bOmERWGriRQDU!gradual.show",
-          href: "javascript:;"
-        },
-        {
-          id: 5,
-          src:
-            "http://bearcarimg.codebear.cn/5de18d7dd61a4c9b055efdabb9f09c836WgCbYTpXrQq9eWgeTXU1s!gradual.show",
-          href: "javascript:;"
-        },
-        {
-          id: 6,
-          src:
-            "http://bearcarimg.codebear.cn/ca6b942ea3f0d7e0ae7f107fe9779d287EeRHrnU6Gjhz639uv6PMY!gradual.show",
-          href: "javascript:;"
-        },
-        {
-          id: 7,
-          src:
-            "http://bearcarimg.codebear.cn/8ead687106ad6d380394a39bebb8eef86wCsJmaJbG07HGEDU8H7S0!gradual.show",
-          href: "javascript:;"
-        },
-        {
-          id: 8,
-          src:
-            "http://bearcarimg.codebear.cn/02596325952cb88e2e63fe9cf2c952bc1SwWxKfeNvZRulKQLgukpM!gradual.show",
-          href: "javascript:;"
-        },
-        {
-          id: 9,
-          src:
-            "http://bearcarimg.codebear.cn/349f6dc27e66f787d93169cad6da732bH9TbSIQgtiC5PIhraGZ9k!gradual.show",
-          href: "javascript:;"
-        },
-        {
-          id: 10,
-          src:
-            "http://bearcarimg.codebear.cn/a87c39432206952ade30d742da64fceb4D6uzMD5EeaKULYsZq7qVe!gradual.show",
-          href: "javascript:;"
-        },
-        {
-          id: 11,
-          src:
-            "http://bearcarimg.codebear.cn/8bdc77316c2f60c84cd84060c4c345af1Z27Iuz4RudcbNBa0Djehi!gradual.show",
-          href: "javascript:;"
-        },
-        {
-          id: 12,
-          src:
-            "http://bearcarimg.codebear.cn/d74e089543afe11a3945c6cd06130b463skAwou9VRH4DpDcMKfEuo!gradual.show",
-          href: "javascript:;"
-        },
-        {
-          id: 13,
-          src:
-            "http://bearcarimg.codebear.cn/f67d9d38e280544cd9dbd3ee6c520b904MtiiViAgAH7HYywyZdNIG!gradual.show",
-          href: "javascript:;"
-        },
-        {
-          id: 14,
-          src:
-            "http://bearcarimg.codebear.cn/25ffb31f5adf7e837540f8da695bc28aHQuHhBZ93Nw7JAMYFJC4U!gradual.show",
-          href: "javascript:;"
-        },
-        {
-          id: 15,
-          src:
-            "http://bearcarimg.codebear.cn/8a61e2e098c59d13bc28b8a4eb667cce3sSvE6gBueFAqFrduNAxS4!gradual.show",
-          href: "javascript:;"
-        },
-        {
-          id: 16,
-          src:
-            "http://bearcarimg.codebear.cn/95a06eee907b49c1e095211323df40f54dnhpdyuf7WLhl6MZxtaPE!gradual.show",
-          href: "javascript:;"
-        },
-        {
-          id: 17,
-          src:
-            "http://bearcarimg.codebear.cn/e386feed6faea239d4e628ae334343c76TKhqAPxh84mKixcFD2jDg!gradual.show",
-          href: "javascript:;"
-        },
-        {
-          id: 18,
-          src:
-            "http://bearcarimg.codebear.cn/d876071258082127cebb0de42f5270b9rxJbFGS4jObsgrikYBq9c!gradual.show",
-          href: "javascript:;"
-        },
-        {
-          id: 19,
-          src:
-            "http://bearcarimg.codebear.cn/4bba98b9b2d3ebc7c41da23cba70f9eb5ZVz5X4NceKe3ioi54a8tu!gradual.show",
-          href: "javascript:;"
-        },
-        {
-          id: 20,
-          src:
-            "http://bearcarimg.codebear.cn/b159e9d856d5bb82a73d92103674134817Ih6um8QgB3fmMUDdAtT4!gradual.show",
-          href: "javascript:;"
-        }
-      ]
     };
   },
   computed: {
-    ...mapGetters(["eimgSrc"]),
-    // ...mapState(["eimgSrc"])
-    // 盒子的上边距
-    posImgAreaSty() {
-      return `padding-top: 300px`;
-    },
-    // 大盒子的最小宽度
-    BoxminWidth() {
-      return `min-width: `;
-    }
+    ...mapGetters(["eimgSrc"])
   },
   methods: {
-    ...mapActions(["updateimgSrc"]),
-    // postem 跳转过来的图片信息
-    agetinfo() {
-      this.id = this.$route.query.id - 1;
-
-      this.imgArea = this.recommendImgList[this.id].src;
-    },
-    // 点击左侧 tab 栏的图片，中间对应显示图片
-    getsrc() {
-      this.imgArea = this.eimgSrc.src;
-    },
-    // 发送请求得到图片信息
-    async getimgInfo() {
-      // this.$http.get("http://localhost:8081/mock/home.json").then(response => {
-      //   let imginfo = response.data.data.canvases[0].varcoverpic[0].rect.split(
-      //     ","
-      //   );
-      //   let a = response.data.data.canvases[0].varcoverpic[0].rect.split(
-      //     ","
-      //   )[0];
-      // });
-      const { data: res } = await this.$http.get(
-        "http://localhost:8081/mock/home.json"
-      );
-      console.log(res);
-    }
+    ...mapActions(["updateimgSrc"])
+    // async getDatainfo() {
+    //   const { data: res } = await this.$http.post(
+    //     "api/puzzle/data/info?token=f2f26ffd-91af-494e-987e-5c71cf418e24&uid=1&id=1880"
+    //   );
+    //   console.log(res);
+    // }
   },
   watch: {
     // 监听 eimgSrc中数据的改变，进而触发处理函数 getsrc，从而实现 imgArea的值的变化，从而改变视图
-    eimgSrc(newVal, oldVal) {
-      this.getsrc();
-    }
+    // eimgSrc(newVal, oldVal) {
+    //   this.getsrc();
+    // }
   },
   created() {
-    this.agetinfo();
-    this.getimgInfo();
+    // this.agetinfo();
+    // this.getimgInfo();
+    // this.getDatainfo();
   }
 };
 </script>
@@ -207,24 +57,7 @@ export default {
   bottom: 0;
   right: 0;
   .posImgArea {
-    // width: 430px;
-    // height: 80px;
     position: relative;
-    // margin: 0 auto;
-    // text-align: center;
-    // padding: 40px;
-    // left: 50%;
-    // top: 50%;
-    // transform: translate(-50%, -50%);
-    // box-sizing: content-box;
-
-    // overflow: visible;
-    // position: relative;
-    // img {
-    //   width: 430px;
-    //   height: 700px;
-    //   margin: auto;
-    // }
   }
 }
 </style>

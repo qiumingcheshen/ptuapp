@@ -242,11 +242,9 @@
     <!-- hotPoster end -->
 
     <!-- groupItems start  推广-->
-
     <div class="groupItems">
       <div class="groupItems_header">
         <div class="groupItems_name">推广</div>
-
         <div class="groupItems_tab">
           <ul>
             <li
@@ -259,7 +257,6 @@
             </li>
           </ul>
         </div>
-
         <div class="groupItems_checkall">
           <a href="javascript:;">
             查看全部
@@ -274,17 +271,15 @@
           :key="index"
           v-show="index == generalizeNum"
         >
-          <li v-for="(item, index) in item.materialList" :key="index">
+          <li v-for="(item, index) in item.materialList" :key="index" @click="posClick(item.id)">
             <img :src="item.thumb" alt />
           </li>
         </ul>
       </div>
     </div>
-
     <!-- groupItems end -->
 
     <!-- groupItems start  活动-->
-
     <div class="groupItems">
       <div class="groupItems_header">
         <div class="groupItems_name">活动</div>
@@ -316,17 +311,15 @@
           :key="index"
           v-show="index == activityNum"
         >
-          <li v-for="(item, index) in item.materialList" :key="index">
+          <li v-for="(item, index) in item.materialList" :key="index" @click="posClick(item.id)">
             <img :src="item.thumb" alt />
           </li>
         </ul>
       </div>
     </div>
-
     <!-- groupItems end -->
 
     <!-- investment start  招商 -->
-
     <div class="groupItems">
       <div class="groupItems_header">
         <div class="groupItems_name">招商</div>
@@ -358,17 +351,15 @@
           :key="index"
           v-show="index == investmentNum"
         >
-          <li v-for="(item, index) in item.materialList" :key="index">
+          <li v-for="(item, index) in item.materialList" :key="index" @click="posClick(item.id)">
             <img :src="item.thumb" alt />
           </li>
         </ul>
       </div>
     </div>
-
     <!-- investment end 招商 -->
 
     <!-- investment start  团队 -->
-
     <div class="groupItems">
       <div class="groupItems_header">
         <div class="groupItems_name">团队</div>
@@ -395,17 +386,15 @@
       </div>
       <div class="groupItems_content">
         <ul class="clearfix" v-for="(item, index) in team" :key="index" v-show="index == teamNum">
-          <li v-for="(item, index) in item.materialList" :key="index">
+          <li v-for="(item, index) in item.materialList" :key="index" @click="posClick(item.id)">
             <img :src="item.thumb" alt />
           </li>
         </ul>
       </div>
     </div>
-
     <!-- investment end 团队 -->
 
     <!-- recommend start  推荐 -->
-
     <div class="recommendBox">
       <div class="recommend">
         <div class="recommend_title">推荐专题</div>
@@ -416,8 +405,457 @@
         </div>
       </div>
     </div>
+    <!-- recommend end -->
+
+    <!-- investment start  正能量 -->
+    <div class="groupItems">
+      <div class="groupItems_header">
+        <div class="groupItems_name">正能量</div>
+
+        <div class="groupItems_tab">
+          <ul>
+            <li
+              v-for="(item, index) in positiveEnergy"
+              :key="index"
+              :class="{active:positiveEnergyNum == index}"
+              @mouseover="positiveEnergyTab(index)"
+            >
+              <a href="javascript:;">{{item.labelname}}</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="groupItems_checkall">
+          <a href="javascript:;">
+            查看全部
+            <i></i>
+          </a>
+        </div>
+      </div>
+      <div class="groupItems_content">
+        <ul
+          class="clearfix"
+          v-for="(item, index) in positiveEnergy"
+          :key="index"
+          v-show="index == positiveEnergyNum"
+        >
+          <li v-for="(item, index) in item.materialList" :key="index" @click="posClick(item.id)">
+            <img :src="item.thumb" alt />
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- investment end 正能量 -->
+
+    <!-- investment start  样式 -->
+    <div class="groupItems">
+      <div class="groupItems_header">
+        <div class="groupItems_name">样式</div>
+
+        <div class="groupItems_tab">
+          <ul>
+            <li
+              v-for="(item, index) in groupStyle"
+              :key="index"
+              :class="{active:groupStyleNum == index}"
+              @mouseover="groupStyleTab(index)"
+            >
+              <a href="javascript:;">{{item.labelname}}</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="groupItems_checkall">
+          <a href="javascript:;">
+            查看全部
+            <i></i>
+          </a>
+        </div>
+      </div>
+      <div class="groupItems_content">
+        <ul
+          class="clearfix"
+          v-for="(item, index) in groupStyle"
+          :key="index"
+          v-show="index == groupStyleNum"
+        >
+          <li v-for="(item, index) in item.materialList" :key="index" @click="posClick(item.id)">
+            <img :src="item.thumb" alt />
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- investment end 样式 -->
+
+    <!-- investment start  风格 -->
+    <div class="groupItems">
+      <div class="groupItems_header">
+        <div class="groupItems_name">风格</div>
+
+        <div class="groupItems_tab">
+          <ul>
+            <li
+              v-for="(item, index) in groupStyleFeng"
+              :key="index"
+              :class="{active:groupStyleFengNum == index}"
+              @mouseover="groupStyleFengTab(index)"
+            >
+              <a href="javascript:;">{{item.labelname}}</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="groupItems_checkall">
+          <a href="javascript:;">
+            查看全部
+            <i></i>
+          </a>
+        </div>
+      </div>
+      <div class="groupItems_content">
+        <ul
+          class="clearfix"
+          v-for="(item, index) in groupStyleFeng"
+          :key="index"
+          v-show="index == groupStyleFengNum"
+        >
+          <li v-for="(item, index) in item.materialList" :key="index" @click="posClick(item.id)">
+            <img :src="item.thumb" alt />
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- investment end 风格 -->
+
+    <!-- investment start  比例 -->
+    <div class="groupItems">
+      <div class="groupItems_header">
+        <div class="groupItems_name">比例</div>
+
+        <div class="groupItems_tab">
+          <ul>
+            <li
+              v-for="(item, index) in proportion"
+              :key="index"
+              :class="{active:proportionNum == index}"
+              @mouseover="proportionTab(index)"
+            >
+              <a href="javascript:;">{{item.labelname}}</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="groupItems_checkall">
+          <a href="javascript:;">
+            查看全部
+            <i></i>
+          </a>
+        </div>
+      </div>
+      <div class="groupItems_content">
+        <ul
+          class="clearfix"
+          v-for="(item, index) in proportion"
+          :key="index"
+          v-show="index == proportionNum"
+        >
+          <li v-for="(item, index) in item.materialList" :key="index" @click="posClick(item.id)">
+            <img :src="item.thumb" alt />
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- investment end 比例 -->
+
+    <!-- recommend start -->
+
+    <div class="recommendBox">
+      <div class="recommend">
+        <div class="recommend_title">推荐专题</div>
+        <div class="recommend_content">
+          <div class="recommend_items" v-for="(item, index) in recommendgroup2" :key="index">
+            <img :src="item.cimage" alt />
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- recommend end -->
+
+    <!-- investment start  培训 -->
+    <div class="groupItems">
+      <div class="groupItems_header">
+        <div class="groupItems_name">培训</div>
+
+        <div class="groupItems_tab">
+          <ul>
+            <li
+              v-for="(item, index) in train"
+              :key="index"
+              :class="{active:trainNum == index}"
+              @mouseover="trainTab(index)"
+            >
+              <a href="javascript:;">{{item.labelname}}</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="groupItems_checkall">
+          <a href="javascript:;">
+            查看全部
+            <i></i>
+          </a>
+        </div>
+      </div>
+      <div class="groupItems_content">
+        <ul class="clearfix" v-for="(item, index) in train" :key="index" v-show="index == trainNum">
+          <li v-for="(item, index) in item.materialList" :key="index" @click="posClick(item.id)">
+            <img :src="item.thumb" alt />
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- investment end 培训 -->
+
+    <!-- investment start  行业 -->
+    <div class="groupItems">
+      <div class="groupItems_header">
+        <div class="groupItems_name">行业</div>
+
+        <div class="groupItems_tab">
+          <ul>
+            <li
+              v-for="(item, index) in industry"
+              :key="index"
+              :class="{active:industryNum == index}"
+              @mouseover="industryTab(index)"
+            >
+              <a href="javascript:;">{{item.labelname}}</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="groupItems_checkall">
+          <a href="javascript:;">
+            查看全部
+            <i></i>
+          </a>
+        </div>
+      </div>
+      <div class="groupItems_content">
+        <ul
+          class="clearfix"
+          v-for="(item, index) in industry"
+          :key="index"
+          v-show="index == industryNum"
+        >
+          <li v-for="(item, index) in item.materialList" :key="index" @click="posClick(item.id)">
+            <img :src="item.thumb" alt />
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- investment end 行业 -->
+
+    <!-- investment start  功能 -->
+    <div class="groupItems">
+      <div class="groupItems_header">
+        <div class="groupItems_name">功能</div>
+
+        <div class="groupItems_tab">
+          <ul>
+            <li
+              v-for="(item, index) in feature"
+              :key="index"
+              :class="{active:featureNum == index}"
+              @mouseover="featureTab(index)"
+            >
+              <a href="javascript:;">{{item.labelname}}</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="groupItems_checkall">
+          <a href="javascript:;">
+            查看全部
+            <i></i>
+          </a>
+        </div>
+      </div>
+      <div class="groupItems_content">
+        <ul
+          class="clearfix"
+          v-for="(item, index) in feature"
+          :key="index"
+          v-show="index == featureNum"
+        >
+          <li v-for="(item, index) in item.materialList" :key="index" @click="posClick(item.id)">
+            <img :src="item.thumb" alt />
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- investment end 功能 -->
+
+    <!-- investment start  节气 -->
+    <div class="groupItems">
+      <div class="groupItems_header">
+        <div class="groupItems_name">节气</div>
+
+        <div class="groupItems_tab">
+          <ul>
+            <li
+              v-for="(item, index) in solarTerm"
+              :key="index"
+              :class="{active:solarTermNum == index}"
+              @mouseover="solarTermTab(index)"
+            >
+              <a href="javascript:;">{{item.labelname}}</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="groupItems_checkall">
+          <a href="javascript:;">
+            查看全部
+            <i></i>
+          </a>
+        </div>
+      </div>
+      <div class="groupItems_content">
+        <ul
+          class="clearfix"
+          v-for="(item, index) in solarTerm"
+          :key="index"
+          v-show="index == solarTermNum"
+        >
+          <li v-for="(item, index) in item.materialList" :key="index" @click="posClick(item.id)">
+            <img :src="item.thumb" alt />
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- investment end 节气 -->
+
+    <!-- investment start  形象 -->
+    <div class="groupItems">
+      <div class="groupItems_header">
+        <div class="groupItems_name">形象</div>
+
+        <div class="groupItems_tab">
+          <ul>
+            <li
+              v-for="(item, index) in visualizate"
+              :key="index"
+              :class="{active:visualizateNum == index}"
+              @mouseover="visualizateTab(index)"
+            >
+              <a href="javascript:;">{{item.labelname}}</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="groupItems_checkall">
+          <a href="javascript:;">
+            查看全部
+            <i></i>
+          </a>
+        </div>
+      </div>
+      <div class="groupItems_content">
+        <ul
+          class="clearfix"
+          v-for="(item, index) in visualizate"
+          :key="index"
+          v-show="index == visualizateNum"
+        >
+          <li v-for="(item, index) in item.materialList" :key="index" @click="posClick(item.id)">
+            <img :src="item.thumb" alt />
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- investment end 形象 -->
+
+    <!-- investment start  生活 -->
+    <div class="groupItems">
+      <div class="groupItems_header">
+        <div class="groupItems_name">生活</div>
+
+        <div class="groupItems_tab">
+          <ul>
+            <li
+              v-for="(item, index) in groupLive"
+              :key="index"
+              :class="{active:groupLiveNum == index}"
+              @mouseover="groupLiveTab(index)"
+            >
+              <a href="javascript:;">{{item.labelname}}</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="groupItems_checkall">
+          <a href="javascript:;">
+            查看全部
+            <i></i>
+          </a>
+        </div>
+      </div>
+      <div class="groupItems_content">
+        <ul
+          class="clearfix"
+          v-for="(item, index) in groupLive"
+          :key="index"
+          v-show="index == groupLiveNum"
+        >
+          <li v-for="(item, index) in item.materialList" :key="index" @click="posClick(item.id)">
+            <img :src="item.thumb" alt />
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- investment end 生活 -->
+
+    <!-- investment start  节日 -->
+    <div class="groupItems">
+      <div class="groupItems_header">
+        <div class="groupItems_name">节日</div>
+
+        <div class="groupItems_tab">
+          <ul>
+            <li
+              v-for="(item, index) in festival"
+              :key="index"
+              :class="{active:festivalNum == index}"
+              @mouseover="festivalTab(index)"
+            >
+              <a href="javascript:;">{{item.labelname}}</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="groupItems_checkall">
+          <a href="javascript:;">
+            查看全部
+            <i></i>
+          </a>
+        </div>
+      </div>
+      <div class="groupItems_content">
+        <ul
+          class="clearfix"
+          v-for="(item, index) in festival"
+          :key="index"
+          v-show="index == festivalNum"
+        >
+          <li v-for="(item, index) in item.materialList" :key="index" @click="posClick(item.id)">
+            <img :src="item.thumb" alt />
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- investment end 节日 -->
 
     <!-- sport start -->
 
@@ -492,21 +930,6 @@
     </div>
 
     <!-- sport end -->
-
-    <!-- recommend start -->
-
-    <div class="recommendBox">
-      <div class="recommend">
-        <div class="recommend_title">推荐专题</div>
-        <div class="recommend_content">
-          <div class="recommend_items" v-for="(item, index) in recommendgroup2" :key="index">
-            <img :src="item.cimage" alt />
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- recommend end -->
 
     <!-- sport start -->
 
@@ -734,6 +1157,61 @@ export default {
       // 控制 团队 tab栏的 切换
       teamNum: 1,
 
+      // 正能量 tab 栏
+      positiveEnergy: [],
+      // 控制 正能量 tab栏的 切换
+      positiveEnergyNum: 1,
+
+      // 样式 tab 栏
+      groupStyle: [],
+      // 控制 样式 tab栏的 切换
+      groupStyleNum: 1,
+
+      // 风格 tab 栏
+      groupStyleFeng: [],
+      // 控制 风格 tab栏的 切换
+      groupStyleFengNum: 1,
+
+      // 比例 tab 栏
+      proportion: [],
+      // 控制 比例 tab栏的 切换
+      proportionNum: 1,
+
+      // 培训 tab 栏
+      train: [],
+      // 控制 培训 tab栏的 切换
+      trainNum: 1,
+
+      // 行业 tab 栏
+      industry: [],
+      // 控制 行业 tab栏的 切换
+      industryNum: 1,
+
+      // 功能 tab 栏
+      feature: [],
+      // 控制 功能 tab栏的 切换
+      featureNum: 1,
+
+      // 节气 tab 栏
+      solarTerm: [],
+      // 控制 节气 tab栏的 切换
+      solarTermNum: 1,
+
+      // 形象 tab 栏
+      visualizate: [],
+      // 控制 形象 tab栏的 切换
+      visualizateNum: 1,
+
+      // 生活 tab 栏
+      groupLive: [],
+      // 控制 生活 tab栏的 切换
+      groupLiveNum: 1,
+
+      // 节日 tab 栏
+      festival: [],
+      // 控制 节日 tab栏的 切换
+      festivalNum: 1,
+
       // 控制登录对话框的显示隐藏
       loginDialogVisible: false,
 
@@ -857,6 +1335,19 @@ export default {
       this.activity = res.data[1].labels;
       this.investment = res.data[2].labels;
       this.team = res.data[3].labels;
+      this.positiveEnergy = res.data[4].labels;
+      this.groupStyle = res.data[5].labels;
+      this.groupStyleFeng = res.data[6].labels;
+      this.proportion = res.data[7].labels;
+      this.train = res.data[8].labels;
+      this.industry = res.data[9].labels;
+      this.feature = res.data[10].labels;
+      this.solarTerm = res.data[11].labels;
+      this.visualizate = res.data[12].labels;
+      this.groupLive = res.data[13].labels;
+      this.festival = res.data[14].labels;
+
+      console.log(this.generalize);
     },
 
     // 推广栏的 hover事件
@@ -874,6 +1365,62 @@ export default {
     // 团队栏的 hover 事件
     teamTab(index) {
       this.teamNum = index;
+    },
+    // 正能量栏的 hover 事件
+    positiveEnergyTab(index) {
+      this.positiveEnergyNum = index;
+    },
+    // 样式栏的 hover 事件
+    groupStyleTab(index) {
+      this.groupStyleNum = index;
+    },
+    // 风格栏的 hover 事件
+    groupStyleFengTab(index) {
+      this.groupStyleFengNum = index;
+    },
+    // 比例栏的 hover 事件
+    proportionTab(index) {
+      this.proportionNum = index;
+    },
+    // 培训栏的 hover 事件
+    trainTab(index) {
+      this.trainNum = index;
+    },
+    // 行业栏的 hover 事件
+    industryTab(index) {
+      this.industryNum = index;
+    },
+    // 功能栏的 hover 事件
+    featureTab(index) {
+      this.featureNum = index;
+    },
+    // 节气栏的 hover 事件
+    solarTermTab(index) {
+      this.solarTermNum = index;
+    },
+    // 形象栏的 hover 事件
+    visualizateTab(index) {
+      this.visualizateNum = index;
+    },
+    // 生活栏的 hover 事件
+    groupLiveTab(index) {
+      this.groupLiveNum = index;
+    },
+    // 节日栏的 hover 事件
+    festivalTab(index) {
+      this.festivalNum = index;
+    },
+
+    // 海报点击跳转事件
+    posClick(id) {
+      console.log(id);
+      let { href } = this.$router.resolve({
+        path: "/editpos",
+        query: {
+          id: id
+        }
+      });
+      window.open(href, "_blank");
     }
   },
   created() {
@@ -1208,12 +1755,13 @@ export default {
 .groupItems_name {
   float: left;
   width: 100px;
+  margin-right: 10px;
   font-size: 30px;
   color: #000;
 }
 .groupItems_tab {
   float: left;
-  width: 983px;
+  width: 963px;
   height: 90px;
   ul {
     overflow: hidden;
@@ -1273,6 +1821,7 @@ export default {
       float: left;
       position: relative;
       width: 279px;
+      height: 468px;
       background: rgba(255, 255, 255, 1);
       box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.2);
       border-radius: 6px;
@@ -1345,10 +1894,6 @@ export default {
   }
 }
 // recommend end
-
-// investment start
-
-// investment end
 
 // sport start
 .sport {

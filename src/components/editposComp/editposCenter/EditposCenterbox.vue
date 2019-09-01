@@ -2,7 +2,7 @@
   <div id="editpos-centerbox">
     <div class="posAreaImg">
       <div class="posImgArea">
-        <edit-pos></edit-pos>
+        <edit-pos-box></edit-pos-box>
       </div>
     </div>
   </div>
@@ -57,7 +57,12 @@ export default {
   bottom: 0;
   right: 0;
   .posImgArea {
-    position: relative;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    padding-top: 30px;
   }
 }
 </style>

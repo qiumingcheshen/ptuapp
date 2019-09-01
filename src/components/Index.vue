@@ -1582,7 +1582,6 @@ export default {
     height: 100%;
   }
   .swiper-slide {
-    background-color: darkturquoise;
     border-radius: 6px;
   }
   .swiper-button-prev,

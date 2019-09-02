@@ -20,7 +20,7 @@ import {
     ColorPicker,
     Tooltip,
     Dialog,
-    Message
+    Message,
 } from 'element-ui'
 
 Vue.use(Button)
